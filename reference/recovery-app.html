@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Athlete Recovery: Mobility & Hamstring Rehab</title>
+<style>
+  :root{--bg:#FAFAF9;--card:#fff;--ink:#111827;--muted:#6B7280;--line:#E5E7EB;--indigo:#312E81}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding-bottom:96px}
+  .mono{font-family:'Courier New',monospace}
+  header.hero{padding:28px 20px 24px;color:#F8FAFC}
+  header.hero .kicker{font-size:10px;letter-spacing:.18em;text-transform:uppercase;opacity:.7}
+  header.hero h1{margin:6px 0 0;font-size:24px;font-weight:900;letter-spacing:-.01em}
+  header.hero p{margin:6px 0 0;font-size:12px;opacity:.75}
+  .pad{padding:16px 16px 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+  .label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:'Courier New',monospace}
+  .body13{font-size:13px;line-height:1.6}
+  .tabs{display:grid;gap:8px;margin-bottom:14px}
+  .tabs button{background:#fff;color:#4B5563;border:2px solid var(--line);border-radius:12px;padding:10px 6px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;line-height:1.3}
+  .tabs button small{display:block;font-family:'Courier New',monospace;font-size:10px;font-weight:400;opacity:.8;margin-top:2px}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;cursor:pointer}
+  .ex.ssA{margin-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
+  .ex.ssB{border-top-left-radius:0;border-top-right-radius:0;border-top:1px dashed #D1D5DB}
+  .sslabel{font-size:10px;font-family:'Courier New',monospace;letter-spacing:.1em;text-transform:uppercase;color:#9CA3AF;margin:4px 0 4px 4px}
+  .ex .row{display:flex;align-items:center;padding:13px 15px;gap:11px}
+  .ex .num{min-width:28px;height:28px;border-radius:8px;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0 4px}
+  .ex .nm{font-weight:700;font-size:13.5px;line-height:1.3}
+  .ex .sets{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .ex .tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+  .ex .chev{color:#9CA3AF;font-size:16px;transition:transform .2s}
+  .ex.open .chev{transform:rotate(180deg)}
+  .ex .body{display:none;padding:0 15px 15px;border-top:1px solid #F3F4F6;font-size:13px;line-height:1.7;color:#374151}
+  .ex.open .body{display:block}
+  .ex .body p{margin:10px 0 0}
+  .ex .eff{font-family:'Courier New',monospace;font-size:11px;color:#4B5563;background:#F3F4F6;border-radius:8px;padding:6px 8px;margin-top:10px}
+  .note{border-radius:12px;padding:12px 14px;font-size:12.5px;line-height:1.6;margin-bottom:12px}
+  .note strong{display:block;margin-bottom:2px}
+  .note ul{margin:4px 0 0;padding-left:18px}
+  .note li{margin-bottom:3px}
+  .amber{background:#FEF3C7;border:1px solid #FDE68A;color:#78350F}
+  .green{background:#ECFDF5;border:1px solid #A7F3D0;color:#065F46}
+  .red{background:#FEF2F2;border:1px solid #FECACA;color:#7F1D1D}
+  .blue{background:#EEF2FF;border:1px solid #C7D2FE;color:#312E81}
+  .primer{border:2px solid #F59E0B;background:#FFFBEB;border-radius:14px;padding:14px;margin-bottom:12px;font-size:13px;line-height:1.6;color:#78350F}
+  .sched{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+  .sched .d{text-align:center;font-size:10px;font-weight:700;color:#9CA3AF}
+  .bar{height:5px;border-radius:3px;margin-top:3px}
+  .legend{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap;font-size:10px;color:var(--muted)}
+  .legend span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;background:var(--c)}
+  .week7{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+  .week7 div{border-radius:8px;padding:6px 2px;text-align:center;font-size:9.5px;line-height:1.25;border:1px solid var(--line);background:#fff;color:#374151}
+  .week7 div b{display:block;font-family:'Courier New',monospace;font-size:9px;color:#9CA3AF;margin-bottom:2px}
+  .week7 .lift{background:#EEF2FF;border-color:#C7D2FE;color:#312E81;font-weight:700}
+  .week7 .leg{background:#FEF3C7;border-color:#FDE68A;color:#78350F;font-weight:700}
+  .timeline{display:flex;gap:6px}
+  .timeline .b{height:8px;border-radius:4px;margin-bottom:4px}
+  .timeline .t{font-size:9px;font-weight:700}
+  .timeline .s{font-size:9px;color:var(--muted)}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .meta .card{margin:0;padding:12px}
+  .meta .v{font-size:12.5px;line-height:1.5}
+  ul.tight{margin:6px 0 0;padding-left:18px;font-size:13px;line-height:1.65;color:#374151}
+  ul.tight li{margin-bottom:4px}
+  h2{font-size:17px;margin:4px 0 10px}
+  .daytabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+  .daytabs button{border:2px solid var(--line);background:#fff;border-radius:10px;padding:8px 2px;font-family:inherit;font-weight:700;font-size:11.5px;cursor:pointer;color:#4B5563;line-height:1.25}
+  .daytabs button small{display:block;font-weight:400;font-size:9.5px;font-family:'Courier New',monospace;opacity:.8}
+  .sesshead{background:#F8FAFC;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+  .sesshead .t{font-weight:800;font-size:16px}
+  .sesshead .d{font-size:12px;color:var(--muted);margin-top:3px}
+  details.sci{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:14px;margin-bottom:12px}
+  details.sci summary{cursor:pointer;padding:13px 14px;font-weight:700;font-size:13.5px;color:#334155;list-style:none}
+  details.sci summary::-webkit-details-marker{display:none}
+  details.sci summary::after{content:"▾";float:right;color:#94A3B8}
+  details.sci[open] summary::after{content:"▴"}
+  details.sci .in{padding:0 14px 12px;font-size:12.5px;line-height:1.6;color:#334155}
+  details.sci .it{padding:8px 0;border-top:1px solid #E2E8F0}
+  .lvl{display:inline-block;font-family:'Courier New',monospace;font-size:9.5px;padding:1px 6px;border-radius:10px;margin-right:6px;vertical-align:1px}
+  .lvl.study{background:#DCFCE7;color:#166534}
+  .lvl.call{background:#F1F5F9;color:#475569;border:1px solid #CBD5E1}
+  .src{font-family:'Courier New',monospace;font-size:10.5px;color:#64748B}
+  table.vol{width:100%;border-collapse:collapse;font-size:12.5px}
+  table.vol td{padding:5px 4px;border-top:1px solid #F3F4F6;vertical-align:middle}
+  table.vol td.n{text-align:right;font-family:'Courier New',monospace;width:42px}
+  table.vol .vb{height:7px;border-radius:4px;background:#6366F1}
+  .changes{font-size:12.5px;line-height:1.6}
+  .changes .item{padding:10px 0;border-top:1px solid #F3F4F6}
+  .changes .item:first-child{border-top:none;padding-top:0}
+  .changes .was{color:#9CA3AF;text-decoration:line-through}
+  a{color:var(--indigo)}
+  .seltabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .seltabs button{border:1px solid var(--line);background:#fff;border-radius:20px;padding:4px 10px;font-family:inherit;font-size:11px;cursor:pointer;color:#4B5563}
+  nav.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:680px;background:#fff;border-top:1px solid var(--line);display:flex;z-index:10;box-shadow:0 -4px 20px rgba(0,0,0,.08);padding-bottom:env(safe-area-inset-bottom)}
+  nav.bottom button{flex:1;background:none;border:none;padding:12px 6px 14px;cursor:pointer;font-family:inherit;font-size:11px;font-weight:700;color:#9CA3AF;position:relative}
+  nav.bottom button .i{display:block;font-size:20px;margin-bottom:2px}
+  nav.bottom button.on{color:var(--indigo)}
+  nav.bottom button.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:36px;height:3px;border-radius:0 0 3px 3px;background:var(--indigo)}
+  footer{text-align:center;font-size:10.5px;color:#9CA3AF;padding:14px 20px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<nav class="bottom" id="nav"></nav>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// EQUIPMENT: power rack (+ pull-up bar), barbell + plates, flat bench
+// (propped on plates for incline), adjustable dumbbells, a towel, floor.
+// ═══════════════════════════════════════════════════════════════════════
+
+// ─── MOBILITY ──────────────────────────────────────────────────────────
+const mobility = {
+  morning:{label:"Morning Wake-Up",time:"8–10 min",sub:"Dynamic · daily, and as your warm-up",color:"#F97316",icon:"☀️",
+    desc:"Controlled dynamic movements to warm tissue and take joints through full range. No long holds here: save static stretching for the evening so it never comes right before a hard session. On lifting days this is your warm-up, followed by 1–2 light ramp-up sets of your first exercise.",
+    ex:[
+      {n:"Leg Swings (Front–Back)",s:"2 × 15 each leg",c:"Hold the rack upright. Swing from the hip with a relaxed knee, building height gradually. Stay tall; don't let your lower back round to fake range."},
+      {n:"Leg Swings (Side-to-Side)",s:"2 × 12 each leg",c:"Face the rack. Swing across your body and out to the side, toes pointing forward. Smooth, not ballistic."},
+      {n:"World's Greatest Stretch",s:"5 each side",c:"Step into a long lunge, back knee off the floor. Same-side elbow drops to the instep, then rotate that arm to the ceiling. Finish by shifting back to straighten the front leg."},
+      {n:"Walking Knee Hugs",s:"10 steps each leg",c:"Pull the knee to your chest while rising onto the toes of the standing foot. Squeeze the standing glute."},
+      {n:"Ankle Circles + Knee-to-Wall",s:"10 each way, then 10 rocks",c:"Circle each ankle, then rock your knee over your toes toward a wall with the heel down. Ankle range matters for squats and lunges."},
+      {n:"Bodyweight Squat with Pause",s:"2 × 8 (3 s at bottom)",c:"Sit between your heels, chest up, knees tracking over your toes. Use the pause to open the hips, then stand smoothly."}
+    ]},
+  evening:{label:"Evening Wind-Down",time:"12–15 min",sub:"Static · after training or before bed",color:"#6366F1",icon:"🌙",
+    desc:"Hold each stretch 45–60 s per side at a strong but comfortable tension (about 6/10, never sharp). Over weeks, regular static stretching improves range mainly by raising your tolerance to stretch and slightly reducing stiffness. It doesn't lengthen muscle fibres; your Nordics and RDLs do that.",
+    ex:[
+      {n:"90/90 Hip Stretch",s:"1 × 60 s each side",c:"Front and back knees both at 90°. Sit tall and hinge your chest over the front shin. Switch sides by rotating your knees over."},
+      {n:"Supine Hamstring Stretch (towel)",s:"1 × 45–60 s each leg",c:"Lie on your back with a towel around the foot. Keep the knee nearly straight and the other leg flat. Stop at a stretch, never pain, especially on the injured side."},
+      {n:"Couch Stretch (Hip Flexor)",s:"1 × 60 s each side",c:"Back knee on a folded towel near the bench or a couch, shin up against it. Tuck the pelvis (squeeze the glute) before you lean back."},
+      {n:"Pigeon Pose",s:"1 × 60 s each side",c:"Front shin angled across your body, back leg long. Square your hips, then fold forward slowly."},
+      {n:"Calf Stretch (Wall, Bent Knee)",s:"1 × 45 s each leg",c:"Back foot flat and that knee bent to target the soleus, the calf muscle that takes most of the load when you run."},
+      {n:"Quad Stretch",s:"1 × 45 s each leg",c:"Standing or side-lying, heel to glute, knees together, pelvis tucked."},
+      {n:"Lateral Hip / Glute Stretch",s:"1 × 45 s each side",c:"Cross one leg behind the other and lean your hips away. You're stretching the glute and TFL; the IT band itself barely stretches."}
+    ]},
+  foam:{label:"Foam Rolling",time:"5–7 min",sub:"Optional · only if you own a roller",color:"#10B981",icon:"🧴",
+    desc:"Optional. Foam rolling gives a short-term range-of-motion boost about the same size as stretching, with no loss of strength or power. If you don't own a roller, skip it: the stretching covers the same ground.",
+    ex:[
+      {n:"Hamstring Roll",s:"30–45 s each leg",c:"Slow passes, about 2–3 cm per second. Ease off directly over the old injury site if it's tender."},
+      {n:"Quad Roll",s:"30–45 s each leg",c:"Face down on your forearms. Turn the leg slightly in and out to cover the whole front of the thigh."},
+      {n:"Calf Roll",s:"30–45 s each leg",c:"Stack the other leg on top for more pressure. Point and flex the foot while you pause on a tight spot."},
+      {n:"Outer Thigh / TFL Roll",s:"30 s each side",c:"Side-lying, focus on the front-outside of the hip rather than grinding the IT band itself."},
+      {n:"Glute / Piriformis Roll",s:"30–45 s each side",c:"Sit on the roller, cross your ankle over the other knee and lean into the crossed-leg side."}
+    ]}
+};
+
+// ─── SHARED CUES ───────────────────────────────────────────────────────
+const NORDIC_SETUP = "Setup: kneel on a folded towel with your heels hooked under a loaded barbell resting on the rack's lowest safety pins (wrap the bar in a towel). Keep your hips straight, lower as slowly as you can, catch yourself with your hands at the bottom and push back up.";
+const RACK_SAFETY = "Set the rack's safeties just below the bottom of your range: you're training without a spotter.";
+
+// ─── UPPER BODY (same Upper A / Upper B every phase) ──────────────────
+const UPPER_A = {
+  title:"Upper A: Heavy Bench + Moderate Pull", day:"Day 1 · Mon",
+  changed:[
+    "Barbell bent-over row → chest-supported DB row. Same back work, but your hamstrings no longer hold a heavy hinge the day before Lower A.",
+    "DB skull crusher → DB overhead triceps extension (moved skull crushers to Upper B). The arms-overhead version grows the triceps more.",
+    "Seated DB shoulder press moved to Upper B to balance pushing across the two days. Pull-ups and hammer curls moved here so back and arms are trained twice a week.",
+    "Rest and effort targets added to every exercise."
+  ],
+  science:[
+    {lvl:"study",src:"Schoenfeld 2017",t:"Heavy loads build max strength better than light loads, but muscle growth is about the same across a wide range of loads when sets are hard. So the bench is heavy (4–6) and the accessories run 8–20 reps."},
+    {lvl:"study",src:"Moesgaard 2022",t:"Alternating a heavy bench day (here) with a moderate one (Upper B) is undulating periodization. In trained lifters it gave slightly bigger 1RM gains than linear plans, with no difference in muscle growth."},
+    {lvl:"study",src:"Maeo 2023",t:"In a 12-week trial, elbow extensions with the arm overhead grew the whole triceps more than arms-down extensions (about +20% vs +14%)."},
+    {lvl:"study",src:"Zhang 2025",t:"Pairing opposing muscles in supersets (triceps + biceps) cut session time with similar strength and size gains in a meta-analysis."},
+    {lvl:"study",src:"Schoenfeld 2016 · Singer 2024",t:"Rest 2–3 min on compounds: 3 min beat 1 min for strength and size in trained men. Beyond about 90 s, extra rest made little further difference for growth."},
+    {lvl:"call",src:"Biomechanics",t:"Swapping the bent-over row for a chest-supported row is a coaching call, not a trial result: it removes an uncontrolled heavy isometric hamstring load from upper days so your Tuesday and Friday leg work starts fresh."}
+  ],
+  ex:[
+    {n:"Barbell Bench Press",s:"4 × 4–6",sets:4,r:"3 min",e:"Stop with 1–2 reps left",tag:"Strength",m:{chest:1,triceps:.5,frontDelt:.5},
+     c:RACK_SAFETY+" Shoulder blades squeezed, feet planted, lower to mid-chest. When you get 6 clean reps on all 4 sets, add 2.5 kg."},
+    {n:"Chest-Supported DB Row",s:"3 × 8–12",sets:3,r:"2 min",e:"Stop with 0–2 reps left",tag:"Back",m:{back:1,biceps:.5,rearDelt:.5},
+     c:"Prop the bench on plates to about 30°, lie chest-down, row both dumbbells toward your hips and pause 1 s at the top."},
+    {n:"DB Incline Press (bench on plates)",s:"3 × 8–12",sets:3,r:"2 min",e:"Stop with 1–2 reps left",tag:"Chest",m:{chest:1,frontDelt:.5,triceps:.5},
+     c:"Same propped bench. Lower until the dumbbells are level with your chest, elbows about 45° from your sides."},
+    {n:"Pull-Up Progression",s:"3 sets · stage-based",sets:3,r:"2 min",e:"Stop with 1–2 reps left",tag:"Back",m:{back:1,biceps:.5},
+     c:"Stage 1 (0 reps): slow negatives, step off the bench and lower for 3–5 s, 3 × 3–5. Stage 2 (1–5 reps): 4–5 sets of 2–3. Stage 3 (6–10): 3 × 5–8. Stage 4 (10+): hold a DB between your feet, 3 × 5–8. Reassess every 2 weeks. No bar on your rack? Do inverted rows under the barbell set at hip height."},
+    {n:"DB Lateral Raise",s:"4 × 12–20",sets:4,r:"60–90 s",e:"0–1 reps left",tag:"Side delts",m:{sideDelt:1},
+     c:"Slight forward lean, lead with your elbows, raise to shoulder height. Small muscle, low fatigue cost, so take these close to failure."},
+    {n:"DB Overhead Triceps Extension",s:"3 × 10–15",sets:3,r:"0 s → curls",e:"0–1 reps left",tag:"Triceps",m:{triceps:1},ss:true,
+     c:"Seated, one dumbbell held in both hands behind your head, elbows pointing up. Lower deep into the stretch, then extend. Go straight into hammer curls."},
+    {n:"DB Hammer Curl",s:"3 × 10–12",sets:3,r:"90 s after the pair",e:"0–1 reps left",tag:"Biceps",m:{biceps:1},
+     c:"Neutral grip, elbows still, lower over 2–3 s. Rest 90 s, then repeat the pair."}
+  ]
+};
+
+const UPPER_B = {
+  title:"Upper B: Heavy Row + Moderate Bench", day:"Day 3 · Thu",
+  changed:[
+    "Barbell bent-over row 4 × 4–6 → heavy one-arm DB row (braced on the bench, no hamstring load).",
+    "Close-grip bench → seated DB shoulder press. Close-grip was a third bench-pattern lift while vertical pressing was missing. Triceps still get two direct exercises a week.",
+    "Barbell curl now pairs with DB skull crushers. Hammer curls moved to Upper A so arms are trained twice a week instead of six biceps sets in one day.",
+    "Pull-ups moved to Upper A. Lateral + rear-delt superset 5 → 4 rounds."
+  ],
+  science:[
+    {lvl:"study",src:"Pelland 2024",t:"Training each lift twice a week helps strength. Frequency had consistent effects on strength, while muscle growth depended mainly on total weekly sets."},
+    {lvl:"study",src:"Robinson 2024",t:"Muscle growth improves as sets get closer to failure, but strength gains barely depend on it. So heavy compounds stop 1–2 reps short, and isolation work goes to 0–1 reps left."},
+    {lvl:"study",src:"Remmert 2025 (preprint)",t:"Extra growth from more sets per session became hard to detect past about 11 sets per muscle, and strength gains plateaued after only a couple of direct sets. Splitting weekly volume over two sessions per muscle fits that."},
+    {lvl:"study",src:"Zhang 2025",t:"The lateral + rear-delt and curl + skull-crusher supersets keep the session shorter with similar results."},
+    {lvl:"call",src:"Balance",t:"Weekly hard sets now land at about 10 for chest and back, 7.5–9.5 across the three shoulder heads and 11–12.5 for the arms. See the Guide tab for the full count."}
+  ],
+  ex:[
+    {n:"One-Arm DB Row (Heavy)",s:"4 × 5–8 each",sets:4,r:"2 min",e:"Stop with 1–2 reps left",tag:"Strength",m:{back:1,biceps:.5,rearDelt:.5},
+     c:"Knee and hand on the bench, flat back. Pull the dumbbell to your hip, pause, lower under control. If your heaviest dumbbell gets 8 easy reps, slow the lowering to 3 s."},
+    {n:"Barbell Bench Press",s:"3 × 8–10",sets:3,r:"2–3 min",e:"Stop with 1–2 reps left",tag:"Chest",m:{chest:1,triceps:.5,frontDelt:.5},
+     c:RACK_SAFETY+" Same setup as Monday, lighter and for more reps."},
+    {n:"Seated DB Shoulder Press",s:"3 × 8–12",sets:3,r:"2 min",e:"Stop with 1–2 reps left",tag:"Shoulders",m:{frontDelt:1,sideDelt:.5,triceps:.5},
+     c:"Sit tall on the end of the bench. Press up and slightly in; don't flare your ribs."},
+    {n:"DB Lateral Raise",s:"4 × 12–20",sets:4,r:"0 s → rear delts",e:"0–1 reps left",tag:"Side delts",m:{sideDelt:1},ss:true,
+     c:"Lead with your elbows to shoulder height. Go straight into rear-delt flyes."},
+    {n:"DB Rear-Delt Fly (chest on bench)",s:"4 × 12–20",sets:4,r:"60–90 s after the pair",e:"0–1 reps left",tag:"Rear delts",m:{rearDelt:1},
+     c:"Chest on the propped bench, slight bend in your elbows, sweep the dumbbells out wide. Think 'hands to the walls'."},
+    {n:"Barbell Curl",s:"3 × 6–10",sets:3,r:"0 s → skull crushers",e:"1 rep left",tag:"Biceps",m:{biceps:1},ss:true,
+     c:"Elbows pinned, no swinging. Heavier arm work for strength. Go straight into skull crushers."},
+    {n:"DB Skull Crusher",s:"3 × 10–12",sets:3,r:"90 s after the pair",e:"0–1 reps left",tag:"Triceps",m:{triceps:1},
+     c:"Lying on the bench, lower the dumbbells beside your head, then extend."}
+  ]
+};
+
+// ─── PHASES ────────────────────────────────────────────────────────────
+const phases = [
+ {id:"p1",phase:"Phase 1",label:"Foundation",weeks:"Weeks 1–4",color:"#3B82F6",
+  goal:"Restore pain-free hamstring activation, start gentle eccentric and lengthening work, keep quads, glutes, adductors and calves loading, and keep building the upper body.",
+  freq:"4 gym days: Upper A, Lower A, Upper B, Lower B + daily isometrics",
+  pain:"Up to 4/10 during exercise is OK if it settles by the next morning. Sharp, catching or worsening pain means stop.",
+  primer:"Daily hamstring isometrics. Bridge heel-dig holds at two knee angles: heels close to your glutes (knee about 90°) and heels far away (knee about 30°). 5 × 10 s each at 50–70% effort, 2–3 times a day. If the hamstring feels reactive, reduce hold time or effort level, not frequency.",
+  run:"Walking 20–30 min, 4–5×/week. Add easy jogging once brisk walking is pain-free.",
+  week:["Upper A","Lower A","Walk","Upper B","Lower B","Walk","Rest"],
+  next:["Two-leg slider curl through full range with pain ≤ 2/10 (the cue to start one-leg lowering)","Single-leg bridge 3 × 12 each side, with similar reps on both sides","Brisk walking and 10 min of easy jogging pain-free","No next-morning flare after lower days for a full week"],
+  days:{UA:UPPER_A,UB:UPPER_B,
+   LA:{title:"Lower A: Eccentric Intro + Squat Pattern",day:"Day 2 · Tue",
+    changed:["Your screenshots didn't include Phase 1 leg days, so this session is rebuilt from the earlier Phase 1 list and adapted to your equipment (the Swiss-ball curl becomes a towel slider curl)."],
+    science:[
+     {lvl:"study",src:"Hickey 2022",t:"Slider leg curls and Nordics, both high-intensity eccentric exercises, were safely introduced early in hamstring rehab when progressed by exercise-specific criteria. One-leg sliders started once two-leg sliders could reach full range."},
+     {lvl:"study",src:"Hickey 2020",t:"Rehab that allowed up to 4/10 pain didn't return athletes faster than pain-free rehab, but it recovered more knee-flexor strength and better kept biceps femoris fascicle length, with no extra reinjuries. That's the basis for your pain rule."},
+     {lvl:"call",src:"Session design",t:"About 14 easy-to-moderate sets with no heavy barbell lift, so this day shouldn't make you queasy."}
+    ],
+    ex:[
+     {n:"Eccentric Slider Leg Curl (two legs)",s:"3 × 6",sets:3,r:"90 s",e:"Slow and controlled, pain ≤ 4/10",tag:"Hamstring",m:{hamstrings:1},
+      c:"Bridge up with your heels on a towel (hard floor) or on weight plates turned face-down (carpet). Slide your heels out over 3–4 s, keeping your hips up as long as you can. Drop your hips and pull back in."},
+     {n:"Goblet Squat",s:"3 × 8–10",sets:3,r:"2 min",e:"Stop with 2–3 reps left",tag:"Quads",m:{quads:1,glutes:.5,adductors:.5},
+      c:"Dumbbell held at your chest, sit between your heels to the deepest depth you can control. Breathe out at the top of each rep."},
+     {n:"Single-Leg Glute Bridge",s:"3 × 10 each",sets:3,r:"60–90 s",e:"Stop with 2 reps left",tag:"Glutes",m:{glutes:1,hamstrings:.5},
+      c:"Hug the other knee to your chest so your back can't arch. Hips level, pause 1 s at the top."},
+     {n:"Copenhagen Plank (Short Lever)",s:"2 × 6 each",sets:2,r:"60 s",e:"Controlled",tag:"Adductors",m:{adductors:1},
+      c:"Side plank with your top knee on the bench, bottom leg free. Raise and lower your hips."},
+     {n:"Straight-Knee Calf Raise",s:"3 × 12–15",sets:3,r:"60 s",e:"Stop with 1–2 reps left",tag:"Calves",m:{calves:1},
+      c:"Dumbbell in one hand, other hand on the rack, balls of your feet on a plate. Full stretch at the bottom, 1 s pause at the top."}
+    ]},
+   LB:{title:"Lower B: Hinge Intro + Single-Leg",day:"Day 4 · Fri",
+    changed:["Rebuilt from the earlier Phase 1 list, since Phase 1 leg days weren't in your screenshots.","A light dumbbell RDL is added so hip-hinge loading starts now instead of waiting for Phase 2."],
+    science:[
+     {lvl:"study",src:"Vermeulen 2022",t:"Starting lengthening exercises at the beginning of rehab, versus partway through, gave similar return-to-sport times and reinjury rates. So the Glider and a light RDL start now."},
+     {lvl:"study",src:"Bourne 2017",t:"Hip-extension training lengthened biceps femoris long head fascicles as much as Nordics did, and grew that muscle more. Starting the hinge early builds toward that."},
+     {lvl:"call",src:"Session design",t:"Hamstring work is spread over two days (sliders Tuesday, hinge Friday) so neither session stacks heavy hamstring sets."}
+    ],
+    ex:[
+     {n:"DB Romanian Deadlift (pain-free range)",s:"3 × 10",sets:3,r:"2 min",e:"Stop with 3 reps left",tag:"Hinge",m:{hamstrings:1,glutes:.5},
+      c:"Light dumbbells. Soft knees, push your hips back until you feel a stretch, and stop before pain passes 4/10. Add range before you add load."},
+     {n:"DB Split Squat",s:"3 × 8 each",sets:3,r:"90 s",e:"Stop with 2 reps left",tag:"Quads",m:{quads:1,glutes:.5},
+      c:"Long stance, drop the back knee straight down, front heel planted."},
+     {n:"Prone Straight-Leg Hip Extension",s:"3 × 12 each",sets:3,r:"60 s",e:"Controlled",tag:"Hamstring",m:{hamstrings:.5,glutes:.5},
+      c:"Face down on the floor, leg straight, lift 10–15 cm and hold 2 s. Keep your hip bones pressed into the floor."},
+     {n:"Askling Glider (towel)",s:"2 × 6 each",sets:2,r:"90 s",e:"Small and pain-free",tag:"Lengthening",m:{hamstrings:.5},
+      c:"Hold the rack. Front foot planted, back foot on a towel. Slide the back foot away while your weight stays on the front heel, then pull back with your arms, not your hamstring."},
+     {n:"Bent-Knee Calf Raise (seated)",s:"3 × 15",sets:3,r:"45 s",e:"Stop with 1–2 reps left",tag:"Calves",m:{calves:1},
+      c:"Seated on the bench, dumbbells on your knees, balls of your feet on a plate. Targets the soleus."}
+    ]}
+  }},
+
+ {id:"p2",phase:"Phase 2",label:"Rebuild",weeks:"Weeks 5–10",color:"#EAB308",
+  goal:"Build hamstring strength and length with progressive eccentric and hip-hinge loading, split across two balanced leg days so neither one is brutal.",
+  freq:"4 gym days + daily isometrics on non-leg days",
+  pain:"Up to 3–4/10 during exercise is OK. No more pain or stiffness than normal the next morning.",
+  primer:"Daily isometrics, once a day, especially on days without a lower-body session: 5 × 10 s at about 70% effort at both knee angles. If the hamstring feels more reactive on a given day, go back to Phase 1 frequency (2–3×) rather than pushing through the main lifts.",
+  run:"Wed & Sat: walk-jog, 30 s jog / 90 s walk × 10, building to 3 min jog / 1 min walk, under about 70% effort. If you run on a lifting day, keep 3+ hours between them.",
+  week:["Upper A","Lower A","Walk-jog","Upper B","Lower B","Walk-jog","Rest"],
+  next:["Assisted Nordics 3 × 6 with a slow, controlled lowering","Single-leg slider curl 3 × 8 each side","20 min continuous easy jog pain-free","Full-depth RDL at a moderate load, pain-free"],
+  days:{UA:UPPER_A,UB:UPPER_B,
+   LA:{title:"Lower A: Nordic + Squat",day:"Day 2 · Tue",
+    changed:[
+     "This was your nausea day. It used to stack RDL 4 × 8–10, Nordics and single-leg eccentric curls (10 hard hamstring sets) plus hip thrusts, Bulgarians and Copenhagens: 19 sets.",
+     "RDL and the single-leg curl moved to Lower B. Nordics now lead this day while you're fresh.",
+     "Back squat and hip thrust moved here from Lower B, so each leg day has exactly one heavy barbell lift. 19 → 16 sets, with rest times."
+    ],
+    science:[
+     {lvl:"study",src:"Bourne 2017",t:"Nordics mainly grow semitendinosus and biceps femoris short head; hip-extension work grows the biceps femoris long head, where most hamstring strains happen. You need both, but they don't need to be in the same session."},
+     {lvl:"study",src:"van Dyk 2019",t:"Injury prevention programs that included Nordics cut hamstring injuries by about 51% in soccer players."},
+     {lvl:"study",src:"Small 2009",t:"Nordics done at the start of training produced bigger gains in rested eccentric strength. That's why they come first through Phase 3."},
+     {lvl:"study",src:"Remmert 2025 (preprint)",t:"Beyond about 11 sets per muscle in one session, extra growth was hard to detect. The old Lower A paid a big fatigue price for sets with little added return."}
+    ],
+    ex:[
+     {n:"Nordic Curl: Fingertip Assist",s:"3 × 5–6",sets:3,r:"2–3 min",e:"Lowering as slow as possible",tag:"Eccentric",m:{hamstrings:1},
+      c:NORDIC_SETUP+" Put your fingertips on the floor (or on a dumbbell handle) to take just enough weight to keep the lowering slow. Use less help each week."},
+     {n:"Barbell Back Squat",s:"4 × 8",sets:4,r:"3 min",e:"Stop with 2 reps left",tag:"Quads",m:{quads:1,glutes:.5,adductors:.5},
+      c:RACK_SAFETY+" Brace, breathe out at the top of each rep, and walk around between sets instead of sitting."},
+     {n:"Barbell Hip Thrust",s:"3 × 10",sets:3,r:"2 min",e:"Stop with 1–2 reps left",tag:"Glutes",m:{glutes:1,hamstrings:.5},
+      c:"Long side of the bench against the rack so it can't slide, upper back on the edge, bar padded with a towel. Drive to full hip lockout, chin tucked, pause 1 s."},
+     {n:"Copenhagen Plank: Reps",s:"3 × 8 each",sets:3,r:"60–90 s",e:"Controlled",tag:"Adductors",m:{adductors:1},
+      c:"Top knee (short lever) on the bench, bottom leg free. Raise and lower your hips smoothly."},
+     {n:"Single-Leg Calf Raise (DB)",s:"3 × 10 each",sets:3,r:"60 s",e:"Stop with 1–2 reps left",tag:"Calves",m:{calves:1},
+      c:"Dumbbell in one hand, other hand on the rack, ball of your foot on a plate. This replaces the barbell version: it's easier to balance and to load heavy."}
+    ]},
+   LB:{title:"Lower B: Hinge + Single-Leg",day:"Day 4 · Fri",
+    changed:[
+     "Your progressive-load, progressive-depth RDL now leads this day, followed by the single-leg eccentric curl.",
+     "Back squat moved to Lower A. Hip thrusts were on both leg days; they're now once a week on Lower A. Reverse lunge removed, since the Bulgarian split squat covers single-leg quad work.",
+     "Calves are now trained on both leg days. 17 → 15 sets."
+    ],
+    science:[
+     {lvl:"study",src:"Bourne 2017",t:"Hip-extension training grew the biceps femoris long head more than Nordics did. RDLs are the hip-extension lift you can load at home."},
+     {lvl:"study",src:"Maeo 2021",t:"Training the hamstrings with the hip flexed (lengthened) grew them more than with the hip straight: about +14% vs +9% over 12 weeks. RDLs and stiff-leg deadlifts load them in that lengthened position."},
+     {lvl:"study",src:"Hickey 2022",t:"The one-leg slider was introduced once the two-leg version reached full range, the same progression you followed in Phase 1."}
+    ],
+    ex:[
+     {n:"Barbell RDL (Progressive Load + Depth)",s:"4 × 8–10",sets:4,r:"3 min",e:"Stop with 2 reps left",tag:"Hinge",m:{hamstrings:1,glutes:.5},
+      c:"Take the bar from the rack. Soft knees, push your hips back, bar close to your legs. Only go as deep as you control with pain ≤ 3/10. Add depth before load."},
+     {n:"Barbell Bulgarian Split Squat: Intro",s:"3 × 6 each",sets:3,r:"2 min",e:"Stop with 2–3 reps left",tag:"Quads",m:{quads:1,glutes:.5},
+      c:"Rear foot on the bench, bar from the rack. Front heel down, drop the back knee straight down. Hold dumbbells instead if your balance is shaky."},
+     {n:"Hamstring Slider Curl: Single-Leg Eccentric (3-0-3)",s:"3 × 6–8 each",sets:3,r:"90 s",e:"Controlled 3 s lowering",tag:"Eccentric",m:{hamstrings:1},
+      c:"Bridge up on the towel or plates. Lower out on one leg over 3 s, then pull back in with both. Switch legs each set."},
+     {n:"DB Lateral Lunge",s:"2 × 10 each side",sets:2,r:"90 s",e:"Stop with 2 reps left",tag:"Adductors",m:{adductors:1,quads:.5,glutes:.5},
+      c:"Step wide, sit back into one hip with the other leg straight, chest up. Adductors take big loads when you kick and cut."},
+     {n:"Bent-Knee Calf Raise (seated)",s:"3 × 15",sets:3,r:"45 s",e:"Stop with 1–2 reps left",tag:"Calves",m:{calves:1},
+      c:"Seated, dumbbells on your knees, balls of your feet on a plate."}
+    ]}
+  }},
+
+ {id:"p3",phase:"Phase 3",label:"Power & Speed",weeks:"Weeks 11–18",color:"#F97316",
+  goal:"Heavier and faster loading, reactive strength, and the groin and calf capacity you'll need back in matches.",
+  freq:"4 gym days + 2 running days",
+  pain:"Zero pain during and after. Any pain means dropping back to Phase 2 loads for a week.",
+  primer:"Use the isometric holds as a warm-up before leg days and runs: 2 × 10 s at each knee angle, building to 80–90% effort.",
+  run:"Wed & Sat: tempo runs 6–8 × 60 m at 60–70%, building to 80–90% across the phase; lateral shuffles and change of direction. Keep running and lifting on separate days, or 3+ hours apart.",
+  week:["Upper A","Lower A","Tempo","Upper B","Lower B","Tempo","Rest"],
+  next:["Full Nordics 3 × 6 with control","Tempo runs at 90% pain-free","Cutting and change of direction pain-free","Single-leg bridge or slider reps within 10% side to side"],
+  days:{UA:UPPER_A,UB:UPPER_B,
+   LA:{title:"Lower A: Power + Nordic + Squat",day:"Day 2 · Tue",
+    changed:[
+     "Squat jumps moved to the start, while you're fresh.",
+     "Stiff-leg deadlift moved to Lower B so it isn't stacked on top of Nordics (same fix as Phase 2). Heavy back squat moved here.",
+     "Bulgarian split squats live on Lower B; explosive step-ups moved there too. 19 → 15 sets + jumps."
+    ],
+    science:[
+     {lvl:"study",src:"Schumann 2022",t:"Running alongside lifting didn't blunt muscle growth or max strength in a meta-analysis, but it did reduce explosive-strength gains, mostly when both were done in the same session. Sessions 3+ hours apart showed no significant loss."},
+     {lvl:"study",src:"Small 2009",t:"Nordics still come early in the session for quality strength gains. They move to the end of the session in Phase 4."},
+     {lvl:"call",src:"Session design",t:"Explosive work first, one heavy barbell lift (squat), then accessories: the order that keeps quality high and nausea low."}
+    ],
+    ex:[
+     {n:"Explosive Squat Jump",s:"3 × 5",sets:3,r:"2 min",e:"Max intent, full reset",tag:"Power",m:{},
+      c:"Bodyweight, or light dumbbells at your sides. Quick dip, jump as high as you can, land softly, reset each rep."},
+     {n:"Nordic Curl: Full Unassisted",s:"3 × 6–8",sets:3,r:"2–3 min",e:"Control as far down as you can",tag:"Eccentric",m:{hamstrings:1},
+      c:NORDIC_SETUP+" No hands until the bottom. Add reps before you add range."},
+     {n:"Barbell Back Squat (Heavy)",s:"4 × 4–6",sets:4,r:"3 min",e:"Stop with 2 reps left",tag:"Strength",m:{quads:1,glutes:.5,adductors:.5},
+      c:RACK_SAFETY+" Take a breath and brace for each rep, exhale at the top, walk between sets."},
+     {n:"Barbell Hip Thrust (Heavy)",s:"3 × 8",sets:3,r:"2 min",e:"Stop with 1–2 reps left",tag:"Glutes",m:{glutes:1,hamstrings:.5},
+      c:"Bench braced against the rack, bar padded. Full lockout, 1 s pause."},
+     {n:"Copenhagen Plank: Long Lever",s:"3 × 8–10 each",sets:3,r:"90 s",e:"Controlled",tag:"Adductors",m:{adductors:1},
+      c:"Ankle on the bench now (long lever). Keep your hips stacked."},
+     {n:"Bent-Knee Calf Raise (seated)",s:"2 × 15",sets:2,r:"45 s",e:"Stop with 1 rep left",tag:"Calves",m:{calves:1},
+      c:"Easy finisher for the soleus, which takes large loads when you sprint."}
+    ]},
+   LB:{title:"Lower B: Power + Hinge + Single-Leg",day:"Day 4 · Fri",
+    changed:[
+     "Explosive step-ups moved first and switched from barbell to dumbbells so you can bail out safely.",
+     "Conventional deadlift removed: it was a second heavy barbell pull straight after heavy squats, a big fatigue cost for little extra hamstring work beyond the stiff-leg deadlift.",
+     "Reverse lunge removed (Bulgarians cover it). 20 → 12 sets + step-ups."
+    ],
+    science:[
+     {lvl:"study",src:"Maeo 2021",t:"Stiff-leg deadlifts load the hamstrings in the lengthened, hip-flexed position, which produced more growth in a 12-week trial."},
+     {lvl:"study",src:"Bourne 2017",t:"Pairing this hip-hinge day with Tuesday's Nordics covers both sides of hamstring development: different muscles, both with longer fascicles."},
+     {lvl:"call",src:"Nausea",t:"Two heavy barbell lifts back to back (squat then conventional deadlift) is exactly the pattern that makes a leg day nauseating. One heavy lift per session now."}
+    ],
+    ex:[
+     {n:"Explosive DB Step-Up (bench)",s:"3 × 5 each",sets:3,r:"2 min",e:"Max intent",tag:"Power",m:{},
+      c:"Dumbbells at your sides. Drive up onto the bench as fast as possible, then step down slowly."},
+     {n:"Barbell Stiff-Leg Deadlift",s:"4 × 6–8",sets:4,r:"3 min",e:"Stop with 2 reps left",tag:"Hinge",m:{hamstrings:1,glutes:.5},
+      c:"Like an RDL with straighter knees and a slightly heavier load. Stop before your back rounds."},
+     {n:"Barbell Bulgarian Split Squat (Heavy)",s:"3 × 6–8 each",sets:3,r:"2 min",e:"Stop with 2 reps left",tag:"Quads",m:{quads:1,glutes:.5},
+      c:"Rear foot on the bench, bar from the rack."},
+     {n:"DB Lateral Lunge (Heavy)",s:"2 × 10 each side",sets:2,r:"90 s",e:"Stop with 2 reps left",tag:"Adductors",m:{adductors:1,quads:.5,glutes:.5},
+      c:"Wide step, sit into the hip, chest up."},
+     {n:"Single-Leg Calf Raise (DB)",s:"3 × 10 each",sets:3,r:"60 s",e:"Stop with 1–2 reps left",tag:"Calves",m:{calves:1},
+      c:"Dumbbell in one hand, hand on the rack, ball of your foot on a plate."}
+    ]}
+  }},
+
+ {id:"p4",phase:"Phase 4",label:"Return to Soccer",weeks:"Weeks 19–26+",color:"#10B981",
+  goal:"Full sprint capacity, soccer-specific movements, and confidence under match pressure, while keeping the strength you've built.",
+  freq:"2 leg days until full team training, then 1 leg day/week + upper days",
+  pain:"Zero pain. Any pain while sprinting or kicking means getting it assessed.",
+  primer:"Keep 2 × 10 s isometric holds at each knee angle in your warm-up before sprints, training and matches.",
+  run:"Sprints and kicking open your Tuesday and Friday sessions. Wed & Sat: dribbling at speed, reactive cutting, small-sided games (5v5 or 7v7 before 11v11). Once you're back in team training, keep about 48 h between heavy hamstring work and matches.",
+  week:["Upper A","Sprints + Lower A","Field","Upper B","Kicking + Lower B","Field","Rest"],
+  criteria:[
+    "Less than 10% strength difference between legs (e.g. single-leg bridge or slider-curl reps)",
+    "Sprint at 100% effort pain-free for 3 consecutive reps",
+    "Decelerate, cut and change direction pain-free",
+    "Jump for headers and land confidently",
+    "Full kicking range, driven shots pain-free",
+    "Confident in reactive, unpredictable movements"
+  ],
+  days:{UA:UPPER_A,UB:UPPER_B,
+   LA:{title:"Lower A: Speed + Squat",day:"Day 2 · Tue",
+    changed:[
+     "Sprints moved from 5th (after heavy RDLs, hip thrusts and Bulgarians) to first. Sprinting at 100% on fatigued hamstrings was the riskiest thing in the old plan.",
+     "Heavy RDL moved to Lower B; heavy squat moved here.",
+     "Nordics now come last, for fatigue resistance."
+    ],
+    science:[
+     {lvl:"study",src:"Small 2010",t:"Eccentric hamstring strength fell steadily across each half of a 90-min soccer-specific running protocol. Tired hamstrings are weaker exactly when they need to brake the leg during sprinting, so sprints go first."},
+     {lvl:"study",src:"Small 2009",t:"Players who did Nordics after training held their eccentric strength better late in a simulated match than players who did them before. At return to play, that's the goal."},
+     {lvl:"study",src:"van Dyk 2019 · Cholp 2025",t:"Keep Nordics for good. Programs that include them roughly halve hamstring injuries in soccer, and low weekly volumes keep the strength once you've built it."}
+    ],
+    ex:[
+     {n:"Sprint Progressions (10–40 m)",s:"3–6 reps at 100%, full recovery",sets:0,r:"Walk back",e:"Stop if anything tightens",tag:"Speed",m:{},
+      c:"Outside, after the morning routine plus 3 build-up runs at 60/75/90%. 10 m → 20 m → 40 m. Walk back between reps."},
+     {n:"Barbell Back Squat (Heavy)",s:"3 × 4–6",sets:3,r:"3 min",e:"Stop with 2 reps left",tag:"Strength",m:{quads:1,glutes:.5,adductors:.5},
+      c:RACK_SAFETY+" Brace, exhale at the top, walk between sets."},
+     {n:"Barbell Hip Thrust (Heavy)",s:"3 × 8–10",sets:3,r:"2 min",e:"Stop with 1–2 reps left",tag:"Glutes",m:{glutes:1,hamstrings:.5},
+      c:"Bench braced against the rack, bar padded, full lockout."},
+     {n:"Copenhagen Plank: Max Difficulty",s:"2 × 10–12 each",sets:2,r:"90 s",e:"Controlled",tag:"Adductors",m:{adductors:1},
+      c:"Long lever, slow lowering. Groin protection for the season."},
+     {n:"Bent-Knee Calf Raise (seated)",s:"2 × 15",sets:2,r:"45 s",e:"Stop with 1 rep left",tag:"Calves",m:{calves:1},
+      c:"Soleus capacity for sprint volume."},
+     {n:"Nordic Curl: Permanent",s:"2 × 6–8",sets:2,r:"2 min",e:"Controlled",tag:"Eccentric",m:{hamstrings:1},
+      c:NORDIC_SETUP+" Now done last, on purpose, to train eccentric strength under fatigue. Keep these once a week for good."}
+    ]},
+   LB:{title:"Lower B: Kicking + Hinge + Single-Leg",day:"Day 4 · Fri",
+    changed:[
+     "Kicking moved from 5th to first: do it fresh at the field, then lift.",
+     "Heavy RDL now lives here. Conventional deadlift and reverse lunge removed.",
+     "Squat jumps dropped: sprints now cover your explosive work."
+    ],
+    science:[
+     {lvl:"study",src:"Rønnestad 2011",t:"Pro soccer players who kept one strength session a week in-season maintained their strength and 40 m sprint speed for 12 weeks. One session every second week lost both. Once you're in full team training, keep at least Lower A plus Nordics weekly."},
+     {lvl:"study",src:"Maeo 2021",t:"Hamstring soreness and strength loss after heavy eccentric work were much smaller in legs that had been training regularly. Consistent weekly Nordics and RDLs keep that protection."},
+     {lvl:"call",src:"Scheduling",t:"Kicking and sprints go before lifting, never after. High-speed work on fresh legs, strength second."}
+    ],
+    ex:[
+     {n:"Kicking Progression",s:"Graded volume",sets:0,r:"—",e:"Progress only when pain-free",tag:"Skill",m:{},
+      c:"Light passes → driven passes → shots → long balls. Only move up a level when the current one is pain-free. At the field, before you lift."},
+     {n:"Barbell RDL (Heavy)",s:"3 × 6–8",sets:3,r:"3 min",e:"Stop with 2 reps left",tag:"Hinge",m:{hamstrings:1,glutes:.5},
+      c:"Full depth now. Bar close, flat back, exhale at the top."},
+     {n:"Barbell Bulgarian Split Squat (Heavy)",s:"3 × 6–8 each",sets:3,r:"2 min",e:"Stop with 2 reps left",tag:"Quads",m:{quads:1,glutes:.5},
+      c:"Rear foot on the bench, bar from the rack."},
+     {n:"DB Lateral Lunge",s:"2 × 10 each side",sets:2,r:"90 s",e:"Stop with 2 reps left",tag:"Adductors",m:{adductors:1,quads:.5,glutes:.5},
+      c:"Wide step, sit into the hip, chest up."},
+     {n:"Single-Leg Calf Raise (DB)",s:"3 × 10 each",sets:3,r:"60 s",e:"Stop with 1–2 reps left",tag:"Calves",m:{calves:1},
+      c:"Dumbbell in one hand, hand on the rack, ball of your foot on a plate."}
+    ]}
+  }}
+];
+
+// ─── GUIDE CONTENT ─────────────────────────────────────────────────────
+const tips = [
+  {t:"Eat at the right time",c:"Have a normal meal 2–3 h before, or a small carb-based snack (banana, toast) 60–90 min before. A big, heavy protein or high-fat meal close to training makes nausea worse, and so does training completely empty."},
+  {t:"Arrive hydrated, sip during",c:"Even mild dehydration makes stomach problems during exercise worse. Sip water with a pinch of salt or an electrolyte tab between sets rather than gulping."},
+  {t:"One heavy barbell lift per leg day",c:"Each leg day now has a single heavy compound lift (squat or hinge), not two or three back to back. That's the structural fix."},
+  {t:"Rest long enough on heavy sets",c:"2–3 min after squats, RDLs and stiff-leg deadlifts. Walk around between sets instead of sitting or lying down, which helps blood return from your legs."},
+  {t:"Breathe through the effort",c:"Brace for each heavy rep, but exhale at the top and breathe between reps. Holding your breath through a whole set causes blood-pressure swings that can bring on nausea and light-headedness."},
+  {t:"Cool down before you stop",c:"5 min of easy walking at the end. Stopping suddenly after heavy leg work lets blood pool in your legs, a classic cause of queasiness."},
+  {t:"Keep the room cool",c:"Heat sends more blood to your skin and away from your gut. Ventilate the room and dress light."}
+];
+
+const principles = [
+  {t:"Hamstrings first, from two directions.",d:"Nordic-type work (knee flexion) and hip-hinge work (RDL, stiff-leg) grow different hamstring muscles, and both lengthen fascicles. One leads each leg day, never both.",s:"Bourne 2017"},
+  {t:"Train the hamstrings long.",d:"Hip-flexed hamstring training grew more muscle than hip-extended training.",s:"Maeo 2021"},
+  {t:"Some pain is allowed early.",d:"Up to 4/10 during exercise gave better strength and fascicle-length recovery than pain-free rehab, with no extra reinjuries.",s:"Hickey 2020"},
+  {t:"Nordics for good.",d:"Programs that include them cut hamstring injuries by about half in soccer players.",s:"van Dyk 2019"},
+  {t:"Heavy for strength, moderate for size.",d:"Heavy loads win for max strength; growth is similar across loads when sets are hard. Each upper day has one heavy lift (4–8 reps) plus 8–20-rep accessories.",s:"Schoenfeld 2017"},
+  {t:"Undulate the main lifts.",d:"Heavy bench on Monday, moderate on Thursday (and the reverse for rows). Undulating plans gave slightly more 1RM in trained lifters.",s:"Moesgaard 2022"},
+  {t:"About 10+ hard sets per muscle per week, twice a week.",d:"More weekly sets build more muscle with diminishing returns; frequency mostly helps strength; little extra growth is detectable beyond about 11 sets per muscle in one session.",s:"Pelland 2024 · Remmert 2025"},
+  {t:"Effort matched to the goal.",d:"Compounds stop 1–2 reps short; isolations go to 0–1 left. Growth improves near failure, strength doesn't need it.",s:"Robinson 2024"},
+  {t:"Rest 2–3 min on compounds.",d:"3 min beat 1 min for strength and size; beyond about 90 s, extra rest adds little for growth.",s:"Schoenfeld 2016 · Singer 2024"},
+  {t:"Fast work first, running separate.",d:"Explosive gains suffer most when running and lifting share a session; sprint and kick before lifting, never after.",s:"Schumann 2022 · Small 2010"},
+  {t:"In-season: once a week holds it.",d:"One strength session a week maintained strength and sprint speed in pro soccer players.",s:"Rønnestad 2011"}
+];
+
+const sources = [
+  ["Bourne 2017: Nordic vs hip extension, hamstring architecture (BJSM)","https://search.pedro.org.au/search-results/record-detail/57401"],
+  ["Bourne 2017: exercise selection and hamstring activation (BJSM)","https://pure.southwales.ac.uk/en/publications/impact-of-exercise-selection-on-hamstring-muscle-activation/"],
+  ["Maeo 2021: hamstring hypertrophy, seated vs prone leg curl (MSSE)","https://pubmed.ncbi.nlm.nih.gov/33009197/"],
+  ["Maeo 2023: triceps growth, overhead vs neutral arm (EJSS)","https://pubmed.ncbi.nlm.nih.gov/35819335/"],
+  ["Hickey 2020: pain-free vs pain-threshold hamstring rehab (JOSPT)","https://pubmed.ncbi.nlm.nih.gov/32005093/"],
+  ["Hickey 2022: early high-intensity eccentric loading after hamstring strain","https://mural.maynoothuniversity.ie/17939/1/JH_early.pdf"],
+  ["Vermeulen 2022: early vs delayed lengthening exercises (BJSM)","https://pmc.ncbi.nlm.nih.gov/articles/PMC9252858"],
+  ["van Dyk 2019: Nordic programs and hamstring injury rates (PEDro summary)","https://pedro.org.au/english/systematic-review-found-injury-prevention-programs-include-nordic-hamstring-exercises-decrease-risk-hamstring-injuries-among-soccer-players/"],
+  ["Cholp & Zemková 2025: high vs low volume Nordics","https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1631205/full"],
+  ["Small 2009: timing of Nordics in soccer training (JSCR)","https://research.cumbria.ac.uk/en/publications/effect-of-timing-of-eccentric-hamstring-strengthening-exercises-d/"],
+  ["Small 2010: soccer fatigue and eccentric hamstring strength (JSAMS)","https://insight.cumbria.ac.uk/id/eprint/2012"],
+  ["Rønnestad 2011: in-season strength maintenance in soccer (JSCR)","https://pubmed.ncbi.nlm.nih.gov/21873897/"],
+  ["Schumann 2022: concurrent aerobic and strength training (Sports Med)","https://pubmed.ncbi.nlm.nih.gov/34757594/"],
+  ["Schoenfeld 2017: low vs high load (JSCR)","https://pubmed.ncbi.nlm.nih.gov/28834797/"],
+  ["Pelland 2024: weekly volume and frequency dose-response (preprint)","https://sportrxiv.org/index.php/server/preprint/view/460/version/587"],
+  ["Remmert 2025: per-session volume (preprint)","https://sportrxiv.org/index.php/server/preprint/download/537/1148/1071"],
+  ["Robinson 2024: proximity to failure (FAU summary)","https://www.fau.edu/newsdesk/articles/muscle-growth-strength-study"],
+  ["Singer 2024: rest intervals and hypertrophy (Frontiers)","https://doaj.org/article/18363f4031e0487793db2084bee23f38"],
+  ["Schoenfeld 2016: 3-min vs 1-min rest (JSCR)","https://pubmed.ncbi.nlm.nih.gov/26605807/"],
+  ["Moesgaard 2022: periodization meta-analysis (Sports Med)","https://www.pubmed.gov/35044672/"],
+  ["Zhang 2025: supersets vs traditional sets (Sports Med)","https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12011898/"],
+  ["Static stretching mechanisms review (Sports Med 2025)","https://fisiologiadelejercicio.com/wp-content/uploads/2025/04/Mechanisms-Underlying-Range-of-Motion-Improvements-Following-Acute-and-Chronic-Static.pdf"],
+  ["Konrad 2021: foam rolling vs stretching","https://pmc.ncbi.nlm.nih.gov/articles/PMC8514717"],
+  ["van Wijck 2012: exercise GI symptoms and gut blood flow","https://pubmed.ncbi.nlm.nih.gov/22229513/"]
+];
+
+const MUSCLES = [["chest","Chest"],["back","Back (lats/upper back)"],["frontDelt","Front delts"],["sideDelt","Side delts"],["rearDelt","Rear delts"],["biceps","Biceps"],["triceps","Triceps"],["hamstrings","Hamstrings"],["quads","Quads"],["glutes","Glutes"],["adductors","Adductors"],["calves","Calves"]];
+
+function weekly(p){
+  const tot={};
+  ["UA","LA","UB","LB"].forEach(k=>p.days[k].ex.forEach(e=>{
+    for(const [mu,w] of Object.entries(e.m||{})) tot[mu]=(tot[mu]||0)+w*(e.sets||0);
+  }));
+  return tot;
+}
+const isHard = e => Object.keys(e.m||{}).length>0;
+function sessionSets(s){return s.ex.filter(isHard).reduce((a,e)=>a+(e.sets||0),0)}
+function sessionLabel(s){const extra=s.ex.some(e=>!isHard(e));return `${sessionSets(s)} working sets${extra?" + speed/power work":""}`}
+
+// ─── STATE ─────────────────────────────────────────────────────────────
+const S = {page:"rehab",routine:"morning",phase:"p2",day:"LA",gphase:"p2"};
+try{Object.assign(S,JSON.parse(localStorage.getItem("recov2")||"{}"))}catch(e){}
+function store(){try{localStorage.setItem("recov2",JSON.stringify(S))}catch(e){}}
+const esc = s => String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const fmt = n => (Math.round(n*10)/10).toString();
+
+function exList(list,color){
+  let n=0, out="";
+  list.forEach((e,i)=>{
+    const prevSS = i>0 && list[i-1].ss;
+    let lbl;
+    if(prevSS){lbl=n+"b";} else {n++; lbl = e.ss ? n+"a" : String(n);}
+    if(e.ss && !prevSS) out+=`<div class="sslabel">Superset: alternate ${n}a and ${n}b</div>`;
+    const cls = e.ss ? "ssA" : (prevSS ? "ssB" : "");
+    out+=`<div class="ex ${cls}" onclick="this.classList.toggle('open')">
+      <div class="row">
+        <div class="num" style="background:${color}18;color:${color}">${lbl}</div>
+        <div style="flex:1;min-width:0"><div class="nm">${esc(e.n)}</div><div class="sets">${esc(e.s)}${e.r?` · rest ${esc(e.r)}`:""}</div></div>
+        ${e.tag?`<span class="tag" style="background:${color}15;color:${color};border:1px solid ${color}35">${esc(e.tag)}</span>`:""}
+        <div class="chev">▾</div>
+      </div>
+      <div class="body"><p>${esc(e.c)}</p>${e.e?`<div class="eff">Effort: ${esc(e.e)}</div>`:""}</div>
+    </div>`;
+  });
+  return out;
+}
+
+function hero(kicker,title,sub,grad){
+  return `<header class="hero" style="background:${grad}"><div class="kicker mono">${kicker}</div><h1>${title}</h1><p class="mono">${sub}</p></header>`;
+}
+
+// ─── PAGES ─────────────────────────────────────────────────────────────
+function mobilityPage(){
+  const r = mobility[S.routine];
+  const lifts = ["Up A","Leg A","—","Up B","Leg B","—","—"];
+  const days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  const plan = [[1,1,0],[1,1,1],[1,1,0],[1,1,0],[1,1,1],[1,0,0],[0,1,1]];
+  const bars = days.map((d,i)=>`<div><div class="d">${d}</div>
+      <div class="bar" style="background:${plan[i][0]?"#F97316":"#F3F4F6"}"></div>
+      <div class="bar" style="background:${plan[i][1]?"#6366F1":"#F3F4F6"}"></div>
+      <div class="bar" style="background:${plan[i][2]?"#10B981":"#F3F4F6"}"></div>
+      <div class="d mono" style="margin-top:4px;color:#312E81">${lifts[i]}</div></div>`).join("");
+  const tabs = Object.entries(mobility).map(([k,v])=>`<button onclick="go({routine:'${k}'})" style="${S.routine===k?`background:${v.color};color:#fff;border-color:${v.color}`:""}"><div style="font-size:17px">${v.icon}</div>${v.label}<small>${v.time}</small></button>`).join("");
+  return hero("Daily Routines","Mobility","Dynamic AM · Static PM · Roll if you have one","linear-gradient(135deg,#0F172A,#1E293B)")+
+  `<div class="pad">
+    <div class="card"><div class="label">Weekly schedule</div><div class="sched">${bars}</div>
+      <div class="legend"><span style="--c:#F97316">Morning</span><span style="--c:#6366F1">Evening</span><span style="--c:#10B981">Foam roll (optional)</span></div></div>
+    <div class="tabs" style="grid-template-columns:1fr 1fr 1fr">${tabs}</div>
+    <div class="note" style="background:${r.color}12;border:1px solid ${r.color}30;color:#374151">
+      <div class="label" style="color:${r.color};margin-bottom:4px">${r.sub}</div>${esc(r.desc)}</div>
+    ${exList(r.ex,r.color)}
+  </div>`;
+}
+
+function rehabPage(){
+  const p = phases.find(x=>x.id===S.phase) || phases[1];
+  const tl = phases.map(x=>`<div style="flex:${x.id==="p4"?2:1};cursor:pointer" onclick="go({phase:'${x.id}'})"><div class="b" style="background:${x.color};opacity:${x.id===p.id?1:.35}"></div><div class="t mono" style="color:${x.color}">${x.phase}</div><div class="s">${x.label}</div></div>`).join("");
+  const dn = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  const wk = p.week.map((w,i)=>{const c=/Lower/.test(w)?"leg":(/Upper/.test(w)?"lift":"");return `<div class="${c}"><b>${dn[i]}</b>${esc(w)}</div>`}).join("");
+  const order = [["UA","Upper A","Mon"],["LA","Lower A","Tue"],["UB","Upper B","Thu"],["LB","Lower B","Fri"]];
+  const day = p.days[S.day] ? S.day : "LA";
+  const sess = p.days[day];
+  const dayBtns = order.map(([k,l,d])=>`<button onclick="go({day:'${k}'})" style="${day===k?`background:${p.color};color:#fff;border-color:${p.color}`:""}">${l}<small>${d}</small></button>`).join("");
+  const nextBox = p.criteria
+    ? `<div class="note green"><strong>✅ Return-to-play criteria</strong><ul>${p.criteria.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>`
+    : `<div class="note green"><strong>Move to the next phase when you can tick all of these</strong><ul>${p.next.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>`;
+  const sci = sess.science.map(s=>`<div class="it"><span class="lvl ${s.lvl}">${s.lvl==="study"?"Study":"Coaching call"}</span><span class="src">${esc(s.src)}</span><div>${esc(s.t)}</div></div>`).join("");
+  return hero("Hamstring Rehab + Strength","Rehab Program","Criteria-based · 4 phases · Upper/Lower split","linear-gradient(135deg,#1E1B4B,#312E81)")+
+  `<div class="pad">
+    <div class="card"><div class="label">Timeline (tap a phase)</div><div class="timeline">${tl}</div>
+      <div class="note amber" style="margin:12px 0 0"><strong>Criteria-based, not time-based.</strong>Move up a phase when you meet the checklist below, not because the weeks are up.</div></div>
+    <h2 style="color:${p.color}">${p.phase}: ${p.label} <span class="mono" style="font-size:11px;color:#6B7280;font-weight:400">${p.weeks}</span></h2>
+    <div class="card"><div class="label">Your week</div><div class="week7">${wk}</div></div>
+    <div class="card"><div class="label">Goal</div><div class="body13">${esc(p.goal)}</div></div>
+    <div class="meta">
+      <div class="card"><div class="label">Frequency</div><div class="v">${esc(p.freq)}</div></div>
+      <div class="card"><div class="label">Pain rule</div><div class="v">${esc(p.pain)}</div></div>
+    </div>
+    <div class="primer"><div class="label" style="color:#B45309">Daily hamstring primer</div>${esc(p.primer)}</div>
+    <div class="card"><div class="label">Running / field</div><div class="body13">${esc(p.run)}</div></div>
+    ${nextBox}
+    <div class="daytabs">${dayBtns}</div>
+    <div class="sesshead"><div class="t">${esc(sess.title)}</div><div class="d">${esc(sess.day)} · ${sessionLabel(sess)}</div></div>
+    <div class="note blue"><strong>What changed from your old version</strong><ul>${sess.changed.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div>
+    <details class="sci"><summary>🔬 Science behind this session</summary><div class="in">${sci}</div></details>
+    <div class="label" style="margin-top:4px">Warm up with the morning routine + 1–2 light ramp-up sets · tap an exercise for cues</div>
+    ${exList(sess.ex,p.color)}
+    <div class="note green" style="font-size:12px;margin-top:4px">Finish with 5 min of easy walking${/^L/.test(day)?", then the evening stretches later":""}.</div>
+  </div>`;
+}
+
+function guidePage(){
+  const gp = phases.find(x=>x.id===S.gphase) || phases[1];
+  const w = weekly(gp);
+  const max = Math.max(...MUSCLES.map(([k])=>w[k]||0), 1);
+  const rows = MUSCLES.map(([k,l])=>`<tr><td>${l}</td><td style="width:45%"><div class="vb" style="width:${Math.round(100*(w[k]||0)/max)}%;background:${["hamstrings","quads","glutes","adductors","calves"].includes(k)?gp.color:"#6366F1"}"></div></td><td class="n">${fmt(w[k]||0)}</td></tr>`).join("");
+  const sel = phases.map(x=>`<button onclick="go({gphase:'${x.id}'})" style="${x.id===gp.id?`background:${x.color};color:#fff;border-color:${x.color}`:""}">${x.phase}</button>`).join("");
+  return hero("Session Guide","How It's Built","Evidence · Nausea fixes · Weekly volume","linear-gradient(135deg,#7C2D12,#9A3412)")+
+  `<div class="pad">
+    <div class="card body13"><div class="label">Equipment used</div>
+      Power rack (safeties + pull-up bar), barbell and plates, flat bench (propped on plates for incline), adjustable dumbbells, a towel and some floor. Sprints and kicking in Phase 4 need a field and a ball. No machines, bands, boxes or Swiss ball.</div>
+    <h2>The rules this plan follows</h2>
+    <div class="card changes">${principles.map(p=>`<div class="item"><b>${esc(p.t)}</b> ${esc(p.d)} <span class="src">(${esc(p.s)})</span></div>`).join("")}</div>
+    <h2>Weekly hard sets per muscle</h2>
+    <div class="card">
+      <div class="seltabs">${sel}</div>
+      <table class="vol">${rows}</table>
+      <div class="body13" style="margin-top:10px;font-size:12px;color:#4B5563">Counted the way the 2024 dose-response meta-analysis counts them: 1 set for the main muscle, 0.5 for muscles that help. Power drills, sprints and kicking aren't counted. Phase 1 leg sets are deliberately light.</div>
+    </div>
+    <h2>Why leg day made you queasy</h2>
+    <div class="card body13">Hard exercise pulls blood away from your gut toward the working muscles, and legs are the biggest muscles you have. Add several heavy lifts back to back, breath-holding, a full stomach, heat or dehydration, and the gut complains. It's common and usually harmless, and most of the triggers are fixable.</div>
+    ${exList(tips.map(t=>({n:t.t,s:"",c:t.c})),"#EA580C")}
+    <div class="note red"><strong>Stop and get checked</strong>Chest pain, fainting or nearly fainting, a racing or irregular heartbeat, or vomiting that keeps coming back are not normal training nausea.</div>
+    <h2>Sources</h2>
+    <div class="card"><ul class="tight">${sources.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${esc(t)}</a></li>`).join("")}</ul></div>
+  </div>`;
+}
+
+const navItems=[{id:"mobility",l:"Mobility",i:"🧘"},{id:"rehab",l:"Rehab",i:"🦵"},{id:"guide",l:"Guide",i:"🔬"}];
+function render(){
+  const pages={mobility:mobilityPage,rehab:rehabPage,guide:guidePage};
+  document.getElementById("app").innerHTML = (pages[S.page]||rehabPage)() +
+    `<footer class="mono">Barbell + adjustable DBs · Each muscle 2×/week · Evidence-based · Not a substitute for professional assessment</footer>`;
+  document.getElementById("nav").innerHTML = navItems.map(n=>`<button class="${S.page===n.id?"on":""}" onclick="go({page:'${n.id}'},true)"><span class="i">${n.i}</span>${n.l}</button>`).join("");
+}
+function go(patch,top){Object.assign(S,patch);store();render();if(top)window.scrollTo(0,0)}
+render();
+</script>
+</body>
+</html>

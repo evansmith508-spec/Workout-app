@@ -1,0 +1,3521 @@
+{
+  "meta": {
+    "name": "Hamstring Rehab + Strength (Upper/Lower)",
+    "version": "2026-11-11",
+    "disclaimer": "Not a substitute for professional assessment.",
+    "weekStartsOn": "monday",
+    "sessionOrder": [
+      "UA",
+      "LA",
+      "UB",
+      "LB"
+    ]
+  },
+  "equipment": {
+    "available": [
+      "power rack with safeties and pull-up bar",
+      "barbell",
+      "weight plates",
+      "flat bench (can be propped on plates for incline)",
+      "adjustable dumbbells",
+      "towel",
+      "floor space"
+    ],
+    "phase4Extras": [],
+    "notAvailable": [
+      "machines",
+      "cables",
+      "bands",
+      "plyo boxes",
+      "Swiss ball",
+      "sled"
+    ],
+    "userSettingsNeeded": [
+      "units (kg/lb)",
+      "barbell weight",
+      "plate inventory",
+      "dumbbell min/max/increment",
+      "owns foam roller (yes/no)"
+    ]
+  },
+  "volumeCounting": {
+    "method": "fractional sets: each completed working set adds its muscle weights (1 = direct, 0.5 = indirect)",
+    "excludedCategories": [
+      "power"
+    ],
+    "perSessionCautionFractionalSets": 11
+  },
+  "muscles": [
+    {
+      "id": "chest",
+      "label": "Chest"
+    },
+    {
+      "id": "back",
+      "label": "Back (lats/upper back)"
+    },
+    {
+      "id": "frontDelt",
+      "label": "Front delts"
+    },
+    {
+      "id": "sideDelt",
+      "label": "Side delts"
+    },
+    {
+      "id": "rearDelt",
+      "label": "Rear delts"
+    },
+    {
+      "id": "biceps",
+      "label": "Biceps"
+    },
+    {
+      "id": "triceps",
+      "label": "Triceps"
+    },
+    {
+      "id": "hamstrings",
+      "label": "Hamstrings"
+    },
+    {
+      "id": "quads",
+      "label": "Quads"
+    },
+    {
+      "id": "glutes",
+      "label": "Glutes"
+    },
+    {
+      "id": "adductors",
+      "label": "Adductors"
+    },
+    {
+      "id": "calves",
+      "label": "Calves"
+    }
+  ],
+  "phases": [
+    {
+      "id": "p1",
+      "name": "Phase 1",
+      "label": "Foundation",
+      "weeks": "Weeks 1–4",
+      "color": "#3B82F6",
+      "goal": "Restore pain-free hamstring activation, start gentle eccentric and lengthening work, keep quads, glutes, adductors and calves loading, and keep building the upper body.",
+      "frequency": "4 gym days: Upper A, Lower A, Upper B, Lower B + daily isometrics",
+      "painRule": {
+        "display": "Up to 4/10 during exercise is OK if it settles by the next morning. Sharp, catching or worsening pain means stop.",
+        "maxDuringPain": 4,
+        "mustSettleByNextMorning": true,
+        "onViolation": "Hold progression; reduce range or load ~10% next session."
+      },
+      "primer": {
+        "display": "Daily hamstring isometrics. Bridge heel-dig holds at two knee angles: heels close to your glutes (knee about 90°) and heels far away (knee about 30°). 5 × 10 s each at 50–70% effort, 2–3 times a day. If the hamstring feels reactive, reduce hold time or effort level, not frequency.",
+        "angles": [
+          "knee ~90° (heels close to glutes)",
+          "knee ~30° (heels far away)"
+        ],
+        "schedule": "daily",
+        "timesPerDay": [
+          2,
+          3
+        ],
+        "sets": 5,
+        "holdSec": 10,
+        "effortPct": [
+          50,
+          70
+        ]
+      },
+      "week": [
+        {
+          "day": "mon",
+          "slot": "UA",
+          "label": "Upper A"
+        },
+        {
+          "day": "tue",
+          "slot": "LA",
+          "label": "Lower A"
+        },
+        {
+          "day": "wed",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "thu",
+          "slot": "UB",
+          "label": "Upper B"
+        },
+        {
+          "day": "fri",
+          "slot": "LB",
+          "label": "Lower B"
+        },
+        {
+          "day": "sat",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "sun",
+          "slot": "REST",
+          "label": "Rest"
+        }
+      ],
+      "criteriaType": "advance-to-next-phase",
+      "criteria": [
+        {
+          "id": "p1-c1",
+          "text": "Two-leg slider curl through full range with pain ≤ 2/10 (the cue to start one-leg lowering)",
+          "autoCheck": {
+            "exerciseId": "slider-leg-curl",
+            "variant": "two-leg-eccentric",
+            "minSets": 3,
+            "painMax": 2,
+            "requiresUserConfirm": "full range"
+          }
+        },
+        {
+          "id": "p1-c2",
+          "text": "Single-leg bridge 3 × 12 each side, with similar reps on both sides",
+          "autoCheck": {
+            "exerciseId": "single-leg-glute-bridge",
+            "minSets": 3,
+            "minReps": 12,
+            "perSide": true,
+            "sideDiffMaxPct": 10
+          }
+        },
+        {
+          "id": "p1-c4",
+          "text": "No next-morning flare after lower days for a full week",
+          "autoCheck": {
+            "morningAfterNotWorseForDays": 7
+          }
+        }
+      ],
+      "sessionIds": {
+        "UA": "UA",
+        "LA": "p1-LA",
+        "UB": "UB",
+        "LB": "p1-LB"
+      }
+    },
+    {
+      "id": "p2",
+      "name": "Phase 2",
+      "label": "Rebuild",
+      "weeks": "Weeks 5–10",
+      "color": "#EAB308",
+      "goal": "Build hamstring strength and length with progressive eccentric and hip-hinge loading, split across two balanced leg days so neither one is brutal.",
+      "frequency": "4 gym days + daily isometrics on non-leg days",
+      "painRule": {
+        "display": "Up to 3–4/10 during exercise is OK. No more pain or stiffness than normal the next morning.",
+        "maxDuringPain": 4,
+        "mustSettleByNextMorning": true,
+        "onViolation": "Hold progression; reduce range or load ~10% next session."
+      },
+      "primer": {
+        "display": "Daily isometrics, once a day, especially on days without a lower-body session: 5 × 10 s at about 70% effort at both knee angles. If the hamstring feels more reactive on a given day, go back to Phase 1 frequency (2–3×) rather than pushing through the main lifts.",
+        "angles": [
+          "knee ~90° (heels close to glutes)",
+          "knee ~30° (heels far away)"
+        ],
+        "schedule": "non-leg-days",
+        "timesPerDay": [
+          1,
+          1
+        ],
+        "sets": 5,
+        "holdSec": 10,
+        "effortPct": [
+          70,
+          70
+        ],
+        "ifReactive": "Return to Phase 1 frequency (2–3×/day)"
+      },
+      "week": [
+        {
+          "day": "mon",
+          "slot": "UA",
+          "label": "Upper A"
+        },
+        {
+          "day": "tue",
+          "slot": "LA",
+          "label": "Lower A"
+        },
+        {
+          "day": "wed",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "thu",
+          "slot": "UB",
+          "label": "Upper B"
+        },
+        {
+          "day": "fri",
+          "slot": "LB",
+          "label": "Lower B"
+        },
+        {
+          "day": "sat",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "sun",
+          "slot": "REST",
+          "label": "Rest"
+        }
+      ],
+      "criteriaType": "advance-to-next-phase",
+      "criteria": [
+        {
+          "id": "p2-c1",
+          "text": "Assisted Nordics 3 × 6 with a slow, controlled lowering",
+          "autoCheck": {
+            "exerciseId": "nordic-curl",
+            "variant": "fingertip-assist",
+            "minSets": 3,
+            "minReps": 6
+          }
+        },
+        {
+          "id": "p2-c2",
+          "text": "Single-leg slider curl 3 × 8 each side",
+          "autoCheck": {
+            "exerciseId": "slider-leg-curl",
+            "variant": "single-leg-eccentric",
+            "minSets": 3,
+            "minReps": 8,
+            "perSide": true
+          }
+        },
+        {
+          "id": "p2-c4",
+          "text": "Full-depth RDL at a moderate load, pain-free",
+          "autoCheck": null
+        }
+      ],
+      "sessionIds": {
+        "UA": "UA",
+        "LA": "p2-LA",
+        "UB": "UB",
+        "LB": "p2-LB"
+      }
+    },
+    {
+      "id": "p3",
+      "name": "Phase 3",
+      "label": "Power & Strength",
+      "weeks": "Weeks 11–18",
+      "color": "#F97316",
+      "goal": "Heavier and faster loading, reactive strength, and more groin and calf capacity.",
+      "frequency": "4 gym days: Upper A, Lower A, Upper B, Lower B",
+      "painRule": {
+        "display": "Zero pain during and after. Any pain means dropping back to Phase 2 loads for a week.",
+        "maxDuringPain": 0,
+        "mustSettleByNextMorning": true,
+        "onViolation": "Drop back to Phase 2 loads for 1 week."
+      },
+      "primer": {
+        "display": "Use the isometric holds as a warm-up before leg days: 2 × 10 s at each knee angle, building to 80–90% effort.",
+        "angles": [
+          "knee ~90° (heels close to glutes)",
+          "knee ~30° (heels far away)"
+        ],
+        "schedule": "warm-up",
+        "sets": 2,
+        "holdSec": 10,
+        "effortPct": [
+          80,
+          90
+        ]
+      },
+      "week": [
+        {
+          "day": "mon",
+          "slot": "UA",
+          "label": "Upper A"
+        },
+        {
+          "day": "tue",
+          "slot": "LA",
+          "label": "Lower A"
+        },
+        {
+          "day": "wed",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "thu",
+          "slot": "UB",
+          "label": "Upper B"
+        },
+        {
+          "day": "fri",
+          "slot": "LB",
+          "label": "Lower B"
+        },
+        {
+          "day": "sat",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "sun",
+          "slot": "REST",
+          "label": "Rest"
+        }
+      ],
+      "criteriaType": "advance-to-next-phase",
+      "criteria": [
+        {
+          "id": "p3-c1",
+          "text": "Full Nordics 3 × 6 with control",
+          "autoCheck": {
+            "exerciseId": "nordic-curl",
+            "variant": "full-unassisted",
+            "minSets": 3,
+            "minReps": 6
+          }
+        },
+        {
+          "id": "p3-c4",
+          "text": "Single-leg bridge or slider reps within 10% side to side",
+          "autoCheck": null
+        }
+      ],
+      "sessionIds": {
+        "UA": "UA",
+        "LA": "p3-LA",
+        "UB": "UB",
+        "LB": "p3-LB"
+      }
+    },
+    {
+      "id": "p4",
+      "name": "Phase 4",
+      "label": "Athletic for Life",
+      "weeks": "Week 19 onward",
+      "color": "#10B981",
+      "goal": "Keep the strength and hamstring resilience you have built, jump and land with confidence, and make this the training you keep doing for life.",
+      "frequency": "4 gym days: Upper A, Lower A, Upper B, Lower B, ongoing",
+      "painRule": {
+        "display": "Zero pain. Any hamstring pain during jumps or lifts means getting it assessed.",
+        "maxDuringPain": 0,
+        "mustSettleByNextMorning": true,
+        "onViolation": "Stop the session and get assessed."
+      },
+      "primer": {
+        "display": "Keep 2 × 10 s isometric holds at each knee angle in your warm-up before leg days.",
+        "angles": [
+          "knee ~90° (heels close to glutes)",
+          "knee ~30° (heels far away)"
+        ],
+        "schedule": "warm-up",
+        "sets": 2,
+        "holdSec": 10,
+        "effortPct": null
+      },
+      "week": [
+        {
+          "day": "mon",
+          "slot": "UA",
+          "label": "Upper A"
+        },
+        {
+          "day": "tue",
+          "slot": "LA",
+          "label": "Lower A"
+        },
+        {
+          "day": "wed",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "thu",
+          "slot": "UB",
+          "label": "Upper B"
+        },
+        {
+          "day": "fri",
+          "slot": "LB",
+          "label": "Lower B"
+        },
+        {
+          "day": "sat",
+          "slot": "REST",
+          "label": "Rest"
+        },
+        {
+          "day": "sun",
+          "slot": "REST",
+          "label": "Rest"
+        }
+      ],
+      "criteriaType": "return-to-play",
+      "criteria": [
+        {
+          "id": "p4-c1",
+          "text": "Less than 10% strength difference between legs (e.g. single-leg bridge or slider-curl reps)",
+          "autoCheck": null
+        },
+        {
+          "id": "p4-c4",
+          "text": "Jump and land confidently, on two legs and on one",
+          "autoCheck": null
+        }
+      ],
+      "sessionIds": {
+        "UA": "UA",
+        "LA": "p4-LA",
+        "UB": "UB",
+        "LB": "p4-LB"
+      }
+    }
+  ],
+  "sessions": {
+    "UA": {
+      "id": "UA",
+      "slot": "UA",
+      "title": "Upper A: Heavy Bench + Moderate Pull",
+      "day": "Day 1 · Mon",
+      "whatChanged": [
+        "Barbell bent-over row → chest-supported DB row. Same back work, but your hamstrings no longer hold a heavy hinge the day before Lower A.",
+        "DB skull crusher → DB overhead triceps extension (moved skull crushers to Upper B). The arms-overhead version grows the triceps more.",
+        "Seated DB shoulder press moved to Upper B to balance pushing across the two days. Pull-ups and hammer curls moved here so back and arms are trained twice a week.",
+        "Rest and effort targets added to every exercise.",
+        "Incline press up to 4 sets and 3 rear-delt fly sets added, so front and rear delts reach 10 sets a week."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Schoenfeld 2017",
+          "text": "Heavy loads build max strength better than light loads, but muscle growth is about the same across a wide range of loads when sets are hard. So the bench is heavy (4–6) and the accessories run 8–20 reps."
+        },
+        {
+          "level": "study",
+          "source": "Moesgaard 2022",
+          "text": "Alternating a heavy bench day (here) with a moderate one (Upper B) is undulating periodization. In trained lifters it gave slightly bigger 1RM gains than linear plans, with no difference in muscle growth."
+        },
+        {
+          "level": "study",
+          "source": "Maeo 2023",
+          "text": "In a 12-week trial, elbow extensions with the arm overhead grew the whole triceps more than arms-down extensions (about +20% vs +14%)."
+        },
+        {
+          "level": "study",
+          "source": "Zhang 2025",
+          "text": "Pairing opposing muscles in supersets (triceps + biceps) cut session time with similar strength and size gains in a meta-analysis."
+        },
+        {
+          "level": "study",
+          "source": "Schoenfeld 2016 · Singer 2024",
+          "text": "Rest 2–3 min on compounds: 3 min beat 1 min for strength and size in trained men. Beyond about 90 s, extra rest made little further difference for growth."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Biomechanics",
+          "text": "Swapping the bent-over row for a chest-supported row is a coaching call, not a trial result: it removes an uncontrolled heavy isometric hamstring load from upper days so your Tuesday and Friday leg work starts fresh."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "barbell-bench-press",
+          "variant": null,
+          "name": "Barbell Bench Press",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 4–6",
+            "sets": 4,
+            "repsMin": 4,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Strength",
+          "muscles": {
+            "chest": 1,
+            "triceps": 0.5,
+            "frontDelt": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Set the rack's safeties just below the bottom of your range: you're training without a spotter. Shoulder blades squeezed, feet planted, lower to mid-chest. When you get 6 clean reps on all 4 sets, add 2.5 kg.",
+          "isMainLift": true,
+          "label": "1"
+        },
+        {
+          "exerciseId": "chest-supported-db-row",
+          "variant": null,
+          "name": "Chest-Supported DB Row",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 8–12",
+            "sets": 3,
+            "repsMin": 8,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 0–2 reps left",
+            "rirMin": 0,
+            "rirMax": 2
+          },
+          "tag": "Back",
+          "muscles": {
+            "back": 1,
+            "biceps": 0.5,
+            "rearDelt": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Prop the bench on plates to about 30°, lie chest-down, row both dumbbells toward your hips and pause 1 s at the top.",
+          "isMainLift": false,
+          "label": "2"
+        },
+        {
+          "exerciseId": "db-incline-press",
+          "variant": null,
+          "name": "DB Incline Press (bench on plates)",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 8–12",
+            "sets": 4,
+            "repsMin": 8,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Chest",
+          "muscles": {
+            "chest": 1,
+            "frontDelt": 0.5,
+            "triceps": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Same propped bench. Lower until the dumbbells are level with your chest, elbows about 45° from your sides.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "pull-up",
+          "variant": "stage-based",
+          "name": "Pull-Up Progression",
+          "category": "compound",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 sets · stage-based",
+            "sets": 3,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Back",
+          "muscles": {
+            "back": 1,
+            "biceps": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "pullup-stage",
+          "superset": null,
+          "cue": "Stage 1 (0 reps): slow negatives, step off the bench and lower for 3–5 s, 3 × 3–5. Stage 2 (1–5 reps): 4–5 sets of 2–3. Stage 3 (6–10): 3 × 5–8. Stage 4 (10+): hold a DB between your feet, 3 × 5–8. Reassess every 2 weeks. No bar on your rack? Do inverted rows under the barbell set at hip height.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "db-lateral-raise",
+          "variant": null,
+          "name": "DB Lateral Raise",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 12–20",
+            "sets": 4,
+            "repsMin": 12,
+            "repsMax": 20,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "60–90 s",
+            "minSec": 60,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Side delts",
+          "muscles": {
+            "sideDelt": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Slight forward lean, lead with your elbows, raise to shoulder height. Small muscle, low fatigue cost, so take these close to failure.",
+          "isMainLift": false,
+          "label": "5"
+        },
+        {
+          "exerciseId": "db-rear-delt-fly",
+          "variant": null,
+          "name": "DB Rear-Delt Fly (chest on bench)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 12–20",
+            "sets": 3,
+            "repsMin": 12,
+            "repsMax": 20,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "60–90 s",
+            "minSec": 60,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Rear delts",
+          "muscles": {
+            "rearDelt": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Chest on the propped bench, slight bend in your elbows, sweep the dumbbells out wide. Think 'hands to the walls'.",
+          "isMainLift": false,
+          "label": "6"
+        },
+        {
+          "exerciseId": "db-overhead-triceps-extension",
+          "variant": null,
+          "name": "DB Overhead Triceps Extension",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 10–15",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "0 s → curls",
+            "minSec": 0,
+            "maxSec": 0,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Triceps",
+          "muscles": {
+            "triceps": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": "first",
+          "cue": "Seated, one dumbbell held in both hands behind your head, elbows pointing up. Lower deep into the stretch, then extend. Go straight into hammer curls.",
+          "isMainLift": false,
+          "label": "7a"
+        },
+        {
+          "exerciseId": "db-hammer-curl",
+          "variant": null,
+          "name": "DB Hammer Curl",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 10–12",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "90 s after the pair",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": true
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Biceps",
+          "muscles": {
+            "biceps": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": "second",
+          "cue": "Neutral grip, elbows still, lower over 2–3 s. Rest 90 s, then repeat the pair.",
+          "isMainLift": false,
+          "label": "7b"
+        }
+      ]
+    },
+    "p1-LA": {
+      "id": "p1-LA",
+      "slot": "LA",
+      "title": "Lower A: Eccentric Intro + Squat Pattern",
+      "day": "Day 2 · Tue",
+      "whatChanged": [
+        "Your screenshots didn't include Phase 1 leg days, so this session is rebuilt from the earlier Phase 1 list and adapted to your equipment (the Swiss-ball curl becomes a towel slider curl)."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Hickey 2022",
+          "text": "Slider leg curls and Nordics, both high-intensity eccentric exercises, were safely introduced early in hamstring rehab when progressed by exercise-specific criteria. One-leg sliders started once two-leg sliders could reach full range."
+        },
+        {
+          "level": "study",
+          "source": "Hickey 2020",
+          "text": "Rehab that allowed up to 4/10 pain didn't return athletes faster than pain-free rehab, but it recovered more knee-flexor strength and better kept biceps femoris fascicle length, with no extra reinjuries. That's the basis for your pain rule."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Session design",
+          "text": "About 14 easy-to-moderate sets with no heavy barbell lift, so this day shouldn't make you queasy."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "slider-leg-curl",
+          "variant": "two-leg-eccentric",
+          "name": "Eccentric Slider Leg Curl (two legs)",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 6",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Slow and controlled, pain ≤ 4/10",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Hamstring",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "slider",
+          "superset": null,
+          "cue": "Bridge up with your heels on a towel (hard floor) or on weight plates turned face-down (carpet). Slide your heels out over 3–4 s, keeping your hips up as long as you can. Drop your hips and pull back in.",
+          "isMainLift": false,
+          "label": "1"
+        },
+        {
+          "exerciseId": "goblet-squat",
+          "variant": null,
+          "name": "Goblet Squat",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 8–10",
+            "sets": 3,
+            "repsMin": 8,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2–3 reps left",
+            "rirMin": 2,
+            "rirMax": 3
+          },
+          "tag": "Quads",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5,
+            "adductors": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Dumbbell held at your chest, sit between your heels to the deepest depth you can control. Breathe out at the top of each rep.",
+          "isMainLift": true,
+          "label": "2"
+        },
+        {
+          "exerciseId": "single-leg-glute-bridge",
+          "variant": null,
+          "name": "Single-Leg Glute Bridge",
+          "category": "accessory",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 10 each",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60–90 s",
+            "minSec": 60,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Glutes",
+          "muscles": {
+            "glutes": 1,
+            "hamstrings": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "reps",
+          "superset": null,
+          "cue": "Hug the other knee to your chest so your back can't arch. Hips level, pause 1 s at the top.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "copenhagen-plank",
+          "variant": "short-lever",
+          "name": "Copenhagen Plank (Short Lever)",
+          "category": "accessory",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "2 × 6 each",
+            "sets": 2,
+            "repsMin": 6,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60 s",
+            "minSec": 60,
+            "maxSec": 60,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "reps",
+          "superset": null,
+          "cue": "Side plank with your top knee on the bench, bottom leg free. Raise and lower your hips.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "straight-knee-calf-raise",
+          "variant": null,
+          "name": "Straight-Knee Calf Raise",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 12–15",
+            "sets": 3,
+            "repsMin": 12,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "60 s",
+            "minSec": 60,
+            "maxSec": 60,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Dumbbell in one hand, other hand on the rack, balls of your feet on a plate. Full stretch at the bottom, 1 s pause at the top.",
+          "isMainLift": false,
+          "label": "5"
+        }
+      ]
+    },
+    "UB": {
+      "id": "UB",
+      "slot": "UB",
+      "title": "Upper B: Heavy Row + Moderate Bench",
+      "day": "Day 3 · Thu",
+      "whatChanged": [
+        "Barbell bent-over row 4 × 4–6 → heavy one-arm DB row (braced on the bench, no hamstring load).",
+        "Close-grip bench → seated DB shoulder press. Close-grip was a third bench-pattern lift while vertical pressing was missing. Triceps still get two direct exercises a week.",
+        "Barbell curl now pairs with DB skull crushers. Hammer curls moved to Upper A so arms are trained twice a week instead of six biceps sets in one day.",
+        "Pull-ups moved to Upper A. Lateral + rear-delt superset 5 → 4 rounds.",
+        "Bench and seated shoulder press each up to 4 sets, so front delts reach 10 sets a week."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Pelland 2024",
+          "text": "Training each lift twice a week helps strength. Frequency had consistent effects on strength, while muscle growth depended mainly on total weekly sets."
+        },
+        {
+          "level": "study",
+          "source": "Robinson 2024",
+          "text": "Muscle growth improves as sets get closer to failure, but strength gains barely depend on it. So heavy compounds stop 1–2 reps short, and isolation work goes to 0–1 reps left."
+        },
+        {
+          "level": "study",
+          "source": "Remmert 2025 (preprint)",
+          "text": "Extra growth from more sets per session became hard to detect past about 11 sets per muscle, and strength gains plateaued after only a couple of direct sets. Splitting weekly volume over two sessions per muscle fits that."
+        },
+        {
+          "level": "study",
+          "source": "Zhang 2025",
+          "text": "The lateral + rear-delt and curl + skull-crusher supersets keep the session shorter with similar results."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Balance",
+          "text": "Weekly hard sets now land at about 10 for chest and back, 7.5–9.5 across the three shoulder heads and 11–12.5 for the arms. See the Guide tab for the full count."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "one-arm-db-row",
+          "variant": null,
+          "name": "One-Arm DB Row (Heavy)",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 5–8 each",
+            "sets": 4,
+            "repsMin": 5,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Strength",
+          "muscles": {
+            "back": 1,
+            "biceps": 0.5,
+            "rearDelt": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Knee and hand on the bench, flat back. Pull the dumbbell to your hip, pause, lower under control. If your heaviest dumbbell gets 8 easy reps, slow the lowering to 3 s.",
+          "isMainLift": true,
+          "label": "1"
+        },
+        {
+          "exerciseId": "barbell-bench-press",
+          "variant": null,
+          "name": "Barbell Bench Press",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 8–10",
+            "sets": 4,
+            "repsMin": 8,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2–3 min",
+            "minSec": 120,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Chest",
+          "muscles": {
+            "chest": 1,
+            "triceps": 0.5,
+            "frontDelt": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Set the rack's safeties just below the bottom of your range: you're training without a spotter. Same setup as Monday, lighter and for more reps.",
+          "isMainLift": false,
+          "label": "2"
+        },
+        {
+          "exerciseId": "seated-db-shoulder-press",
+          "variant": null,
+          "name": "Seated DB Shoulder Press",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 8–12",
+            "sets": 4,
+            "repsMin": 8,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Shoulders",
+          "muscles": {
+            "frontDelt": 1,
+            "sideDelt": 0.5,
+            "triceps": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Sit tall on the end of the bench. Press up and slightly in; don't flare your ribs.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "db-lateral-raise",
+          "variant": null,
+          "name": "DB Lateral Raise",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 12–20",
+            "sets": 4,
+            "repsMin": 12,
+            "repsMax": 20,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "0 s → rear delts",
+            "minSec": 0,
+            "maxSec": 0,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Side delts",
+          "muscles": {
+            "sideDelt": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": "first",
+          "cue": "Lead with your elbows to shoulder height. Go straight into rear-delt flyes.",
+          "isMainLift": false,
+          "label": "4a"
+        },
+        {
+          "exerciseId": "db-rear-delt-fly",
+          "variant": null,
+          "name": "DB Rear-Delt Fly (chest on bench)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 12–20",
+            "sets": 4,
+            "repsMin": 12,
+            "repsMax": 20,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "60–90 s after the pair",
+            "minSec": 60,
+            "maxSec": 90,
+            "afterSupersetPair": true
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Rear delts",
+          "muscles": {
+            "rearDelt": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": "second",
+          "cue": "Chest on the propped bench, slight bend in your elbows, sweep the dumbbells out wide. Think 'hands to the walls'.",
+          "isMainLift": false,
+          "label": "4b"
+        },
+        {
+          "exerciseId": "barbell-curl",
+          "variant": null,
+          "name": "Barbell Curl",
+          "category": "accessory",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "3 × 6–10",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "0 s → skull crushers",
+            "minSec": 0,
+            "maxSec": 0,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "1 rep left",
+            "rirMin": 1,
+            "rirMax": 1
+          },
+          "tag": "Biceps",
+          "muscles": {
+            "biceps": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": "first",
+          "cue": "Elbows pinned, no swinging. Heavier arm work for strength. Go straight into skull crushers.",
+          "isMainLift": false,
+          "label": "5a"
+        },
+        {
+          "exerciseId": "db-skull-crusher",
+          "variant": null,
+          "name": "DB Skull Crusher",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 10–12",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "90 s after the pair",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": true
+          },
+          "effort": {
+            "display": "0–1 reps left",
+            "rirMin": 0,
+            "rirMax": 1
+          },
+          "tag": "Triceps",
+          "muscles": {
+            "triceps": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": "second",
+          "cue": "Lying on the bench, lower the dumbbells beside your head, then extend.",
+          "isMainLift": false,
+          "label": "5b"
+        }
+      ]
+    },
+    "p1-LB": {
+      "id": "p1-LB",
+      "slot": "LB",
+      "title": "Lower B: Hinge Intro + Single-Leg",
+      "day": "Day 4 · Fri",
+      "whatChanged": [
+        "Rebuilt from the earlier Phase 1 list, since Phase 1 leg days weren't in your screenshots.",
+        "A light dumbbell RDL is added so hip-hinge loading starts now instead of waiting for Phase 2."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Vermeulen 2022",
+          "text": "Starting lengthening exercises at the beginning of rehab, versus partway through, gave similar return-to-sport times and reinjury rates. So the Glider and a light RDL start now."
+        },
+        {
+          "level": "study",
+          "source": "Bourne 2017",
+          "text": "Hip-extension training lengthened biceps femoris long head fascicles as much as Nordics did, and grew that muscle more. Starting the hinge early builds toward that."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Session design",
+          "text": "Hamstring work is spread over two days (sliders Tuesday, hinge Friday) so neither session stacks heavy hamstring sets."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "db-rdl",
+          "variant": null,
+          "name": "DB Romanian Deadlift (pain-free range)",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 10",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 3 reps left",
+            "rirMin": 3,
+            "rirMax": 3
+          },
+          "tag": "Hinge",
+          "muscles": {
+            "hamstrings": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Light dumbbells. Soft knees, push your hips back until you feel a stretch, and stop before pain passes 4/10. Add range before you add load.",
+          "isMainLift": true,
+          "label": "1"
+        },
+        {
+          "exerciseId": "db-split-squat",
+          "variant": null,
+          "name": "DB Split Squat",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 8 each",
+            "sets": 3,
+            "repsMin": 8,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Quads",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Long stance, drop the back knee straight down, front heel planted.",
+          "isMainLift": false,
+          "label": "2"
+        },
+        {
+          "exerciseId": "prone-hip-extension",
+          "variant": "straight-leg",
+          "name": "Prone Straight-Leg Hip Extension",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 12 each",
+            "sets": 3,
+            "repsMin": 12,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60 s",
+            "minSec": 60,
+            "maxSec": 60,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Hamstring",
+          "muscles": {
+            "hamstrings": 0.5,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "reps",
+          "superset": null,
+          "cue": "Face down on the floor, leg straight, lift 10–15 cm and hold 2 s. Keep your hip bones pressed into the floor.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "askling-glider",
+          "variant": null,
+          "name": "Askling Glider (towel)",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "2 × 6 each",
+            "sets": 2,
+            "repsMin": 6,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Small and pain-free",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Lengthening",
+          "muscles": {
+            "hamstrings": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "range",
+          "superset": null,
+          "cue": "Hold the rack. Front foot planted, back foot on a towel. Slide the back foot away while your weight stays on the front heel, then pull back with your arms, not your hamstring.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "seated-calf-raise",
+          "variant": null,
+          "name": "Bent-Knee Calf Raise (seated)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 15",
+            "sets": 3,
+            "repsMin": 15,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "45 s",
+            "minSec": 45,
+            "maxSec": 45,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Seated on the bench, dumbbells on your knees, balls of your feet on a plate. Targets the soleus.",
+          "isMainLift": false,
+          "label": "5"
+        }
+      ]
+    },
+    "p2-LA": {
+      "id": "p2-LA",
+      "slot": "LA",
+      "title": "Lower A: Nordic + Squat",
+      "day": "Day 2 · Tue",
+      "whatChanged": [
+        "This was your nausea day. It used to stack RDL 4 × 8–10, Nordics and single-leg eccentric curls (10 hard hamstring sets) plus hip thrusts, Bulgarians and Copenhagens: 19 sets.",
+        "RDL and the single-leg curl moved to Lower B. Nordics now lead this day while you're fresh.",
+        "Back squat and hip thrust moved here from Lower B, so each leg day has exactly one heavy barbell lift. 19 → 16 sets, with rest times."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Bourne 2017",
+          "text": "Nordics mainly grow semitendinosus and biceps femoris short head; hip-extension work grows the biceps femoris long head, where most hamstring strains happen. You need both, but they don't need to be in the same session."
+        },
+        {
+          "level": "study",
+          "source": "van Dyk 2019",
+          "text": "Injury prevention programs that included Nordics cut hamstring injuries by about 51% in soccer players."
+        },
+        {
+          "level": "study",
+          "source": "Small 2009",
+          "text": "Nordics done at the start of training produced bigger gains in rested eccentric strength. That's why they come first through Phase 3."
+        },
+        {
+          "level": "study",
+          "source": "Remmert 2025 (preprint)",
+          "text": "Beyond about 11 sets per muscle in one session, extra growth was hard to detect. The old Lower A paid a big fatigue price for sets with little added return."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "nordic-curl",
+          "variant": "fingertip-assist",
+          "name": "Nordic Curl: Fingertip Assist",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 5–6",
+            "sets": 3,
+            "repsMin": 5,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2–3 min",
+            "minSec": 120,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Lowering as slow as possible",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Eccentric",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "nordic",
+          "superset": null,
+          "cue": "Setup: kneel on a folded towel with your heels hooked under a loaded barbell resting on the rack's lowest safety pins (wrap the bar in a towel). Keep your hips straight, lower as slowly as you can, catch yourself with your hands at the bottom and push back up. Put your fingertips on the floor (or on a dumbbell handle) to take just enough weight to keep the lowering slow. Use less help each week.",
+          "isMainLift": false,
+          "label": "1"
+        },
+        {
+          "exerciseId": "barbell-back-squat",
+          "variant": null,
+          "name": "Barbell Back Squat",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 8",
+            "sets": 4,
+            "repsMin": 8,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Quads",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5,
+            "adductors": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Set the rack's safeties just below the bottom of your range: you're training without a spotter. Brace, breathe out at the top of each rep, and walk around between sets instead of sitting.",
+          "isMainLift": true,
+          "label": "2"
+        },
+        {
+          "exerciseId": "barbell-hip-thrust",
+          "variant": null,
+          "name": "Barbell Hip Thrust",
+          "category": "accessory",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "3 × 10",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Glutes",
+          "muscles": {
+            "glutes": 1,
+            "hamstrings": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Long side of the bench against the rack so it can't slide, upper back on the edge, bar padded with a towel. Drive to full hip lockout, chin tucked, pause 1 s.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "copenhagen-plank",
+          "variant": "short-lever",
+          "name": "Copenhagen Plank: Reps",
+          "category": "accessory",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 8 each",
+            "sets": 3,
+            "repsMin": 8,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60–90 s",
+            "minSec": 60,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "reps",
+          "superset": null,
+          "cue": "Top knee (short lever) on the bench, bottom leg free. Raise and lower your hips smoothly.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "single-leg-calf-raise",
+          "variant": null,
+          "name": "Single-Leg Calf Raise (DB)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 10 each",
+            "sets": 3,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60 s",
+            "minSec": 60,
+            "maxSec": 60,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Dumbbell in one hand, other hand on the rack, ball of your foot on a plate. This replaces the barbell version: it's easier to balance and to load heavy.",
+          "isMainLift": false,
+          "label": "5"
+        }
+      ]
+    },
+    "p2-LB": {
+      "id": "p2-LB",
+      "slot": "LB",
+      "title": "Lower B: Hinge + Single-Leg",
+      "day": "Day 4 · Fri",
+      "whatChanged": [
+        "Your progressive-load, progressive-depth RDL now leads this day, followed by the single-leg eccentric curl.",
+        "Back squat moved to Lower A. Hip thrusts were on both leg days; they're now once a week on Lower A. Reverse lunge removed, since the Bulgarian split squat covers single-leg quad work.",
+        "Calves are now trained on both leg days. 17 → 15 sets."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Bourne 2017",
+          "text": "Hip-extension training grew the biceps femoris long head more than Nordics did. RDLs are the hip-extension lift you can load at home."
+        },
+        {
+          "level": "study",
+          "source": "Maeo 2021",
+          "text": "Training the hamstrings with the hip flexed (lengthened) grew them more than with the hip straight: about +14% vs +9% over 12 weeks. RDLs and stiff-leg deadlifts load them in that lengthened position."
+        },
+        {
+          "level": "study",
+          "source": "Hickey 2022",
+          "text": "The one-leg slider was introduced once the two-leg version reached full range, the same progression you followed in Phase 1."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "barbell-rdl",
+          "variant": null,
+          "name": "Barbell RDL (Progressive Load + Depth)",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 8–10",
+            "sets": 4,
+            "repsMin": 8,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Hinge",
+          "muscles": {
+            "hamstrings": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Take the bar from the rack. Soft knees, push your hips back, bar close to your legs. Only go as deep as you control with pain ≤ 3/10. Add depth before load.",
+          "isMainLift": true,
+          "label": "1"
+        },
+        {
+          "exerciseId": "barbell-bulgarian-split-squat",
+          "variant": null,
+          "name": "Barbell Bulgarian Split Squat: Intro",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "3 × 6 each",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2–3 reps left",
+            "rirMin": 2,
+            "rirMax": 3
+          },
+          "tag": "Quads",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Rear foot on the bench, bar from the rack. Front heel down, drop the back knee straight down. Hold dumbbells instead if your balance is shaky.",
+          "isMainLift": false,
+          "label": "2"
+        },
+        {
+          "exerciseId": "slider-leg-curl",
+          "variant": "single-leg-eccentric",
+          "name": "Hamstring Slider Curl: Single-Leg Eccentric (3-0-3)",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 6–8 each",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled 3 s lowering",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Eccentric",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "slider",
+          "superset": null,
+          "cue": "Bridge up on the towel or plates. Lower out on one leg over 3 s, then pull back in with both. Switch legs each set.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "db-lateral-lunge",
+          "variant": null,
+          "name": "DB Lateral Lunge",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "2 × 10 each side",
+            "sets": 2,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1,
+            "quads": 0.5,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Step wide, sit back into one hip with the other leg straight, chest up. Adductors take big loads when you kick and cut.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "seated-calf-raise",
+          "variant": null,
+          "name": "Bent-Knee Calf Raise (seated)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 15",
+            "sets": 3,
+            "repsMin": 15,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "45 s",
+            "minSec": 45,
+            "maxSec": 45,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Seated, dumbbells on your knees, balls of your feet on a plate.",
+          "isMainLift": false,
+          "label": "5"
+        }
+      ]
+    },
+    "p3-LA": {
+      "id": "p3-LA",
+      "slot": "LA",
+      "title": "Lower A: Power + Nordic + Squat",
+      "day": "Day 2 · Tue",
+      "whatChanged": [
+        "Squat jumps moved to the start, while you're fresh.",
+        "Stiff-leg deadlift moved to Lower B so it isn't stacked on top of Nordics (same fix as Phase 2). Heavy back squat moved here.",
+        "Bulgarian split squats live on Lower B; explosive step-ups moved there too. 19 → 16 sets + jumps.",
+        "Bent-knee calf raise up to 3 sets: running is gone, so there is recovery to spare.",
+        "Copenhagen plank and bent-knee calf raise up to 4 sets, so adductors reach 10 sets a week and calves 8."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Small 2009",
+          "text": "Nordics still come early in the session for quality strength gains. They move to the end of the session in Phase 4."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Session design",
+          "text": "Explosive work first, one heavy barbell lift (squat), then accessories: the order that keeps quality high and nausea low."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "squat-jump",
+          "variant": null,
+          "name": "Explosive Squat Jump",
+          "category": "power",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 5",
+            "sets": 3,
+            "repsMin": 5,
+            "repsMax": 5,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Max intent, full reset",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Power",
+          "muscles": {},
+          "countsTowardVolume": false,
+          "hamstringLoad": false,
+          "progression": "quality",
+          "superset": null,
+          "cue": "Bodyweight, or light dumbbells at your sides. Quick dip, jump as high as you can, land softly, reset each rep.",
+          "isMainLift": false,
+          "label": "1"
+        },
+        {
+          "exerciseId": "nordic-curl",
+          "variant": "full-unassisted",
+          "name": "Nordic Curl: Full Unassisted",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 6–8",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2–3 min",
+            "minSec": 120,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Control as far down as you can",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Eccentric",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "nordic",
+          "superset": null,
+          "cue": "Setup: kneel on a folded towel with your heels hooked under a loaded barbell resting on the rack's lowest safety pins (wrap the bar in a towel). Keep your hips straight, lower as slowly as you can, catch yourself with your hands at the bottom and push back up. No hands until the bottom. Add reps before you add range.",
+          "isMainLift": false,
+          "label": "2"
+        },
+        {
+          "exerciseId": "barbell-back-squat",
+          "variant": null,
+          "name": "Barbell Back Squat (Heavy)",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 4–6",
+            "sets": 4,
+            "repsMin": 4,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Strength",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5,
+            "adductors": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Set the rack's safeties just below the bottom of your range: you're training without a spotter. Take a breath and brace for each rep, exhale at the top, walk between sets.",
+          "isMainLift": true,
+          "label": "3"
+        },
+        {
+          "exerciseId": "barbell-hip-thrust",
+          "variant": null,
+          "name": "Barbell Hip Thrust (Heavy)",
+          "category": "accessory",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "3 × 8",
+            "sets": 3,
+            "repsMin": 8,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Glutes",
+          "muscles": {
+            "glutes": 1,
+            "hamstrings": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Bench braced against the rack, bar padded. Full lockout, 1 s pause.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "copenhagen-plank",
+          "variant": "long-lever",
+          "name": "Copenhagen Plank: Long Lever",
+          "category": "accessory",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "4 × 8–10 each",
+            "sets": 4,
+            "repsMin": 8,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "reps",
+          "superset": null,
+          "cue": "Ankle on the bench now (long lever). Keep your hips stacked.",
+          "isMainLift": false,
+          "label": "5"
+        },
+        {
+          "exerciseId": "seated-calf-raise",
+          "variant": null,
+          "name": "Bent-Knee Calf Raise (seated)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 15",
+            "sets": 4,
+            "repsMin": 15,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "45 s",
+            "minSec": 45,
+            "maxSec": 45,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1 rep left",
+            "rirMin": 1,
+            "rirMax": 1
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Easy finisher for the soleus, the calf muscle that does most of the work when your knee is bent.",
+          "isMainLift": false,
+          "label": "6"
+        }
+      ]
+    },
+    "p3-LB": {
+      "id": "p3-LB",
+      "slot": "LB",
+      "title": "Lower B: Power + Hinge + Single-Leg",
+      "day": "Day 4 · Fri",
+      "whatChanged": [
+        "Explosive step-ups moved first and switched from barbell to dumbbells so you can bail out safely.",
+        "Conventional deadlift removed: it was a second heavy barbell pull straight after heavy squats, a big fatigue cost for little extra hamstring work beyond the stiff-leg deadlift.",
+        "Reverse lunge removed (Bulgarians cover it). 20 → 14 sets + step-ups.",
+        "Bulgarian split squat and single-leg calf raise each up one set, using the recovery running used to take.",
+        "Lateral lunge and single-leg calf raise up to 4 sets, and 3 sets of single-leg slider curls added, so quads, adductors, calves and hamstrings reach 10 a week."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Maeo 2021",
+          "text": "Stiff-leg deadlifts load the hamstrings in the lengthened, hip-flexed position, which produced more growth in a 12-week trial."
+        },
+        {
+          "level": "study",
+          "source": "Bourne 2017",
+          "text": "Pairing this hip-hinge day with Tuesday's Nordics covers both sides of hamstring development: different muscles, both with longer fascicles."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Nausea",
+          "text": "Two heavy barbell lifts back to back (squat then conventional deadlift) is exactly the pattern that makes a leg day nauseating. One heavy lift per session now."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "db-step-up-explosive",
+          "variant": null,
+          "name": "Explosive DB Step-Up (bench)",
+          "category": "power",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 5 each",
+            "sets": 3,
+            "repsMin": 5,
+            "repsMax": 5,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Max intent",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Power",
+          "muscles": {},
+          "countsTowardVolume": false,
+          "hamstringLoad": false,
+          "progression": "quality",
+          "superset": null,
+          "cue": "Dumbbells at your sides. Drive up onto the bench as fast as possible, then step down slowly.",
+          "isMainLift": false,
+          "label": "1"
+        },
+        {
+          "exerciseId": "barbell-stiff-leg-deadlift",
+          "variant": null,
+          "name": "Barbell Stiff-Leg Deadlift",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 6–8",
+            "sets": 4,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Hinge",
+          "muscles": {
+            "hamstrings": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Like an RDL with straighter knees and a slightly heavier load. Stop before your back rounds.",
+          "isMainLift": true,
+          "label": "2"
+        },
+        {
+          "exerciseId": "barbell-bulgarian-split-squat",
+          "variant": null,
+          "name": "Barbell Bulgarian Split Squat (Heavy)",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 6–8 each",
+            "sets": 4,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Quads",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Rear foot on the bench, bar from the rack.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "db-lateral-lunge",
+          "variant": null,
+          "name": "DB Lateral Lunge (Heavy)",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 10 each side",
+            "sets": 4,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1,
+            "quads": 0.5,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Wide step, sit into the hip, chest up.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "slider-leg-curl",
+          "variant": "single-leg-eccentric",
+          "name": "Hamstring Slider Curl: Single-Leg Eccentric (3-0-3)",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 6–8 each",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled 3 s lowering",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Eccentric",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "slider",
+          "superset": null,
+          "cue": "Bridge up on the towel or plates. Lower out on one leg over 3 s, then pull back in with both. Switch legs each set.",
+          "isMainLift": false,
+          "label": "5"
+        },
+        {
+          "exerciseId": "single-leg-calf-raise",
+          "variant": null,
+          "name": "Single-Leg Calf Raise (DB)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 10 each",
+            "sets": 4,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60 s",
+            "minSec": 60,
+            "maxSec": 60,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Dumbbell in one hand, hand on the rack, ball of your foot on a plate.",
+          "isMainLift": false,
+          "label": "6"
+        }
+      ]
+    },
+    "p4-LA": {
+      "id": "p4-LA",
+      "slot": "LA",
+      "title": "Lower A: Power + Squat + Nordic",
+      "day": "Day 2 · Tue",
+      "whatChanged": [
+        "Squat jumps open the session, while you are fresh.",
+        "Back to Phase 3 volume: squat 4 sets, Copenhagen 3 sets, Nordics 3 sets.",
+        "Nordics stay last, for fatigue resistance.",
+        "Bent-knee calf raise up to 3 sets.",
+        "Copenhagen plank and bent-knee calf raise up to 4 sets, so adductors reach 10 sets a week and calves 8."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Small 2009",
+          "text": "Players who did Nordics after training held their eccentric strength better late in a simulated match than players who did them before. For lifelong training, that's the goal."
+        },
+        {
+          "level": "study",
+          "source": "van Dyk 2019 · Cholp 2025",
+          "text": "Keep Nordics for good. Programs that include them roughly halve hamstring injuries in soccer, and low weekly volumes keep the strength once you've built it."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "squat-jump",
+          "variant": null,
+          "name": "Explosive Squat Jump",
+          "category": "power",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 5",
+            "sets": 3,
+            "repsMin": 5,
+            "repsMax": 5,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Max intent, full reset",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Power",
+          "muscles": {},
+          "countsTowardVolume": false,
+          "hamstringLoad": true,
+          "progression": "quality",
+          "superset": null,
+          "cue": "Bodyweight, or light dumbbells at your sides. Quick dip, jump as high as you can, land softly, reset each rep.",
+          "isMainLift": false,
+          "label": "1"
+        },
+        {
+          "exerciseId": "barbell-back-squat",
+          "variant": null,
+          "name": "Barbell Back Squat (Heavy)",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 4–6",
+            "sets": 4,
+            "repsMin": 4,
+            "repsMax": 6,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Strength",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5,
+            "adductors": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Set the rack's safeties just below the bottom of your range: you're training without a spotter. Brace, exhale at the top, walk between sets.",
+          "isMainLift": true,
+          "label": "2"
+        },
+        {
+          "exerciseId": "barbell-hip-thrust",
+          "variant": null,
+          "name": "Barbell Hip Thrust (Heavy)",
+          "category": "accessory",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "3 × 8–10",
+            "sets": 3,
+            "repsMin": 8,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Glutes",
+          "muscles": {
+            "glutes": 1,
+            "hamstrings": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Bench braced against the rack, bar padded, full lockout.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "copenhagen-plank",
+          "variant": "long-lever-max",
+          "name": "Copenhagen Plank: Max Difficulty",
+          "category": "accessory",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "4 × 10–12 each",
+            "sets": 4,
+            "repsMin": 10,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "reps",
+          "superset": null,
+          "cue": "Long lever, slow lowering. Groin protection for the season.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "seated-calf-raise",
+          "variant": null,
+          "name": "Bent-Knee Calf Raise (seated)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 15",
+            "sets": 4,
+            "repsMin": 15,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "45 s",
+            "minSec": 45,
+            "maxSec": 45,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1 rep left",
+            "rirMin": 1,
+            "rirMax": 1
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Soleus capacity: the calf muscle that does most of the work when your knee is bent.",
+          "isMainLift": false,
+          "label": "5"
+        },
+        {
+          "exerciseId": "nordic-curl",
+          "variant": "maintenance",
+          "name": "Nordic Curl: Permanent",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 6–8",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Eccentric",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "nordic",
+          "superset": null,
+          "cue": "Setup: kneel on a folded towel with your heels hooked under a loaded barbell resting on the rack's lowest safety pins (wrap the bar in a towel). Keep your hips straight, lower as slowly as you can, catch yourself with your hands at the bottom and push back up. Now done last, on purpose, to train eccentric strength under fatigue. Keep these once a week for good.",
+          "isMainLift": false,
+          "label": "6"
+        }
+      ]
+    },
+    "p4-LB": {
+      "id": "p4-LB",
+      "slot": "LB",
+      "title": "Lower B: Power + Hinge + Single-Leg",
+      "day": "Day 4 · Fri",
+      "whatChanged": [
+        "Kicking removed. Explosive step-ups open the session again, as in Phase 3.",
+        "Heavy RDL back to 4 sets.",
+        "Conventional deadlift and reverse lunge stay out (Bulgarians cover them).",
+        "Bulgarian split squat and single-leg calf raise each up one set.",
+        "Lateral lunge and single-leg calf raise up to 4 sets, and 3 sets of single-leg slider curls added, so quads, adductors, calves and hamstrings reach 10 a week."
+      ],
+      "science": [
+        {
+          "level": "study",
+          "source": "Maeo 2021",
+          "text": "Hamstring soreness and strength loss after heavy eccentric work were much smaller in legs that had been training regularly. Consistent weekly Nordics and RDLs keep that protection."
+        },
+        {
+          "level": "coaching-call",
+          "source": "Session design",
+          "text": "Explosive work first, one heavy barbell lift (RDL), then accessories: the order that keeps quality high and nausea low."
+        }
+      ],
+      "exercises": [
+        {
+          "exerciseId": "db-step-up-explosive",
+          "variant": null,
+          "name": "Explosive DB Step-Up (bench)",
+          "category": "power",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "3 × 5 each",
+            "sets": 3,
+            "repsMin": 5,
+            "repsMax": 5,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Max intent",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Power",
+          "muscles": {},
+          "countsTowardVolume": false,
+          "hamstringLoad": true,
+          "progression": "quality",
+          "superset": null,
+          "cue": "Dumbbells at your sides. Drive up onto the bench as fast as possible, then step down slowly.",
+          "isMainLift": false,
+          "label": "1"
+        },
+        {
+          "exerciseId": "barbell-rdl",
+          "variant": null,
+          "name": "Barbell RDL (Heavy)",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 6–8",
+            "sets": 4,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "rest": {
+            "display": "3 min",
+            "minSec": 180,
+            "maxSec": 180,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Hinge",
+          "muscles": {
+            "hamstrings": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "double",
+          "superset": null,
+          "cue": "Full depth now. Bar close, flat back, exhale at the top.",
+          "isMainLift": true,
+          "label": "2"
+        },
+        {
+          "exerciseId": "barbell-bulgarian-split-squat",
+          "variant": null,
+          "name": "Barbell Bulgarian Split Squat (Heavy)",
+          "category": "compound",
+          "equipment": "barbell",
+          "prescription": {
+            "display": "4 × 6–8 each",
+            "sets": 4,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "2 min",
+            "minSec": 120,
+            "maxSec": 120,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Quads",
+          "muscles": {
+            "quads": 1,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Rear foot on the bench, bar from the rack.",
+          "isMainLift": false,
+          "label": "3"
+        },
+        {
+          "exerciseId": "db-lateral-lunge",
+          "variant": null,
+          "name": "DB Lateral Lunge",
+          "category": "compound",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 10 each side",
+            "sets": 4,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 2 reps left",
+            "rirMin": 2,
+            "rirMax": 2
+          },
+          "tag": "Adductors",
+          "muscles": {
+            "adductors": 1,
+            "quads": 0.5,
+            "glutes": 0.5
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Wide step, sit into the hip, chest up.",
+          "isMainLift": false,
+          "label": "4"
+        },
+        {
+          "exerciseId": "slider-leg-curl",
+          "variant": "single-leg-eccentric",
+          "name": "Hamstring Slider Curl: Single-Leg Eccentric (3-0-3)",
+          "category": "rehab",
+          "equipment": "bodyweight",
+          "prescription": {
+            "display": "3 × 6–8 each",
+            "sets": 3,
+            "repsMin": 6,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "90 s",
+            "minSec": 90,
+            "maxSec": 90,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Controlled 3 s lowering",
+            "rirMin": null,
+            "rirMax": null
+          },
+          "tag": "Eccentric",
+          "muscles": {
+            "hamstrings": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": true,
+          "progression": "slider",
+          "superset": null,
+          "cue": "Bridge up on the towel or plates. Lower out on one leg over 3 s, then pull back in with both. Switch legs each set.",
+          "isMainLift": false,
+          "label": "5"
+        },
+        {
+          "exerciseId": "single-leg-calf-raise",
+          "variant": null,
+          "name": "Single-Leg Calf Raise (DB)",
+          "category": "accessory",
+          "equipment": "dumbbell",
+          "prescription": {
+            "display": "4 × 10 each",
+            "sets": 4,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "rest": {
+            "display": "60 s",
+            "minSec": 60,
+            "maxSec": 60,
+            "afterSupersetPair": false
+          },
+          "effort": {
+            "display": "Stop with 1–2 reps left",
+            "rirMin": 1,
+            "rirMax": 2
+          },
+          "tag": "Calves",
+          "muscles": {
+            "calves": 1
+          },
+          "countsTowardVolume": true,
+          "hamstringLoad": false,
+          "progression": "double",
+          "superset": null,
+          "cue": "Dumbbell in one hand, hand on the rack, ball of your foot on a plate.",
+          "isMainLift": false,
+          "label": "6"
+        }
+      ]
+    }
+  },
+  "mobility": [
+    {
+      "id": "morning",
+      "label": "Morning Wake-Up",
+      "time": "8–10 min",
+      "subtitle": "Dynamic · daily, and as your warm-up",
+      "description": "Controlled dynamic movements to warm tissue and take joints through full range. No long holds here: save static stretching for the evening so it never comes right before a hard session. On lifting days this is your warm-up, followed by 1–2 light ramp-up sets of your first exercise.",
+      "optional": false,
+      "items": [
+        {
+          "name": "Leg Swings (Front–Back)",
+          "prescription": {
+            "display": "2 × 15 each leg",
+            "sets": 2,
+            "repsMin": 15,
+            "repsMax": 15,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "cue": "Hold the rack upright. Swing from the hip with a relaxed knee, building height gradually. Stay tall; don't let your lower back round to fake range."
+        },
+        {
+          "name": "Leg Swings (Side-to-Side)",
+          "prescription": {
+            "display": "2 × 12 each leg",
+            "sets": 2,
+            "repsMin": 12,
+            "repsMax": 12,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "cue": "Face the rack. Swing across your body and out to the side, toes pointing forward. Smooth, not ballistic."
+        },
+        {
+          "name": "World's Greatest Stretch",
+          "prescription": {
+            "display": "5 each side",
+            "sets": 1,
+            "repsMin": 5,
+            "repsMax": 5,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "cue": "Step into a long lunge, back knee off the floor. Same-side elbow drops to the instep, then rotate that arm to the ceiling. Finish by shifting back to straighten the front leg."
+        },
+        {
+          "name": "Walking Knee Hugs",
+          "prescription": {
+            "display": "10 steps each leg",
+            "sets": 1,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "cue": "Pull the knee to your chest while rising onto the toes of the standing foot. Squeeze the standing glute."
+        },
+        {
+          "name": "Ankle Circles + Knee-to-Wall",
+          "prescription": {
+            "display": "10 each way, then 10 rocks",
+            "sets": 1,
+            "repsMin": 10,
+            "repsMax": 10,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": true
+          },
+          "cue": "Circle each ankle, then rock your knee over your toes toward a wall with the heel down. Ankle range matters for squats and lunges."
+        },
+        {
+          "name": "Bodyweight Squat with Pause",
+          "prescription": {
+            "display": "2 × 8 (3 s at bottom)",
+            "sets": 2,
+            "repsMin": 8,
+            "repsMax": 8,
+            "timeSecMin": null,
+            "timeSecMax": null,
+            "perSide": false
+          },
+          "cue": "Sit between your heels, chest up, knees tracking over your toes. Use the pause to open the hips, then stand smoothly."
+        }
+      ]
+    },
+    {
+      "id": "evening",
+      "label": "Evening Wind-Down",
+      "time": "12–15 min",
+      "subtitle": "Static · after training or before bed",
+      "description": "Hold each stretch 45–60 s per side at a strong but comfortable tension (about 6/10, never sharp). Over weeks, regular static stretching improves range mainly by raising your tolerance to stretch and slightly reducing stiffness. It doesn't lengthen muscle fibres; your Nordics and RDLs do that.",
+      "optional": false,
+      "items": [
+        {
+          "name": "90/90 Hip Stretch",
+          "prescription": {
+            "display": "1 × 60 s each side",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 60,
+            "timeSecMax": 60,
+            "perSide": true
+          },
+          "cue": "Front and back knees both at 90°. Sit tall and hinge your chest over the front shin. Switch sides by rotating your knees over."
+        },
+        {
+          "name": "Supine Hamstring Stretch (towel)",
+          "prescription": {
+            "display": "1 × 45–60 s each leg",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 45,
+            "timeSecMax": 60,
+            "perSide": true
+          },
+          "cue": "Lie on your back with a towel around the foot. Keep the knee nearly straight and the other leg flat. Stop at a stretch, never pain, especially on the injured side."
+        },
+        {
+          "name": "Couch Stretch (Hip Flexor)",
+          "prescription": {
+            "display": "1 × 60 s each side",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 60,
+            "timeSecMax": 60,
+            "perSide": true
+          },
+          "cue": "Back knee on a folded towel near the bench or a couch, shin up against it. Tuck the pelvis (squeeze the glute) before you lean back."
+        },
+        {
+          "name": "Pigeon Pose",
+          "prescription": {
+            "display": "1 × 60 s each side",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 60,
+            "timeSecMax": 60,
+            "perSide": true
+          },
+          "cue": "Front shin angled across your body, back leg long. Square your hips, then fold forward slowly."
+        },
+        {
+          "name": "Calf Stretch (Wall, Bent Knee)",
+          "prescription": {
+            "display": "1 × 45 s each leg",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 45,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Back foot flat and that knee bent to target the soleus, the deeper calf muscle."
+        },
+        {
+          "name": "Quad Stretch",
+          "prescription": {
+            "display": "1 × 45 s each leg",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 45,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Standing or side-lying, heel to glute, knees together, pelvis tucked."
+        },
+        {
+          "name": "Lateral Hip / Glute Stretch",
+          "prescription": {
+            "display": "1 × 45 s each side",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 45,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Cross one leg behind the other and lean your hips away. You're stretching the glute and TFL; the IT band itself barely stretches."
+        }
+      ]
+    },
+    {
+      "id": "foam",
+      "label": "Foam Rolling",
+      "time": "5–7 min",
+      "subtitle": "Optional · only if you own a roller",
+      "description": "Optional. Foam rolling gives a short-term range-of-motion boost about the same size as stretching, with no loss of strength or power. If you don't own a roller, skip it: the stretching covers the same ground.",
+      "optional": true,
+      "items": [
+        {
+          "name": "Hamstring Roll",
+          "prescription": {
+            "display": "30–45 s each leg",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 30,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Slow passes, about 2–3 cm per second. Ease off directly over the old injury site if it's tender."
+        },
+        {
+          "name": "Quad Roll",
+          "prescription": {
+            "display": "30–45 s each leg",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 30,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Face down on your forearms. Turn the leg slightly in and out to cover the whole front of the thigh."
+        },
+        {
+          "name": "Calf Roll",
+          "prescription": {
+            "display": "30–45 s each leg",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 30,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Stack the other leg on top for more pressure. Point and flex the foot while you pause on a tight spot."
+        },
+        {
+          "name": "Outer Thigh / TFL Roll",
+          "prescription": {
+            "display": "30 s each side",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 30,
+            "timeSecMax": 30,
+            "perSide": true
+          },
+          "cue": "Side-lying, focus on the front-outside of the hip rather than grinding the IT band itself."
+        },
+        {
+          "name": "Glute / Piriformis Roll",
+          "prescription": {
+            "display": "30–45 s each side",
+            "sets": 1,
+            "repsMin": null,
+            "repsMax": null,
+            "timeSecMin": 30,
+            "timeSecMax": 45,
+            "perSide": true
+          },
+          "cue": "Sit on the roller, cross your ankle over the other knee and lean into the crossed-leg side."
+        }
+      ]
+    }
+  ],
+  "nauseaTips": [
+    {
+      "title": "Eat at the right time",
+      "text": "Have a normal meal 2–3 h before, or a small carb-based snack (banana, toast) 60–90 min before. A big, heavy protein or high-fat meal close to training makes nausea worse, and so does training completely empty."
+    },
+    {
+      "title": "Arrive hydrated, sip during",
+      "text": "Even mild dehydration makes stomach problems during exercise worse. Sip water with a pinch of salt or an electrolyte tab between sets rather than gulping."
+    },
+    {
+      "title": "One heavy barbell lift per leg day",
+      "text": "Each leg day now has a single heavy compound lift (squat or hinge), not two or three back to back. That's the structural fix."
+    },
+    {
+      "title": "Rest long enough on heavy sets",
+      "text": "2–3 min after squats, RDLs and stiff-leg deadlifts. Walk around between sets instead of sitting or lying down, which helps blood return from your legs."
+    },
+    {
+      "title": "Breathe through the effort",
+      "text": "Brace for each heavy rep, but exhale at the top and breathe between reps. Holding your breath through a whole set causes blood-pressure swings that can bring on nausea and light-headedness."
+    },
+    {
+      "title": "Cool down before you stop",
+      "text": "5 min of easy walking at the end. Stopping suddenly after heavy leg work lets blood pool in your legs, a classic cause of queasiness."
+    },
+    {
+      "title": "Keep the room cool",
+      "text": "Heat sends more blood to your skin and away from your gut. Ventilate the room and dress light."
+    }
+  ],
+  "redFlags": "Chest pain, fainting or nearly fainting, a racing or irregular heartbeat, or vomiting that keeps coming back are not normal training nausea — stop and get checked.",
+  "principles": [
+    {
+      "title": "Hamstrings first, from two directions.",
+      "text": "Nordic-type work (knee flexion) and hip-hinge work (RDL, stiff-leg) grow different hamstring muscles, and both lengthen fascicles. One leads each leg day, never both.",
+      "sources": "Bourne 2017"
+    },
+    {
+      "title": "Train the hamstrings long.",
+      "text": "Hip-flexed hamstring training grew more muscle than hip-extended training.",
+      "sources": "Maeo 2021"
+    },
+    {
+      "title": "Some pain is allowed early.",
+      "text": "Up to 4/10 during exercise gave better strength and fascicle-length recovery than pain-free rehab, with no extra reinjuries.",
+      "sources": "Hickey 2020"
+    },
+    {
+      "title": "Nordics for good.",
+      "text": "Programs that include them cut hamstring injuries by about half in soccer players.",
+      "sources": "van Dyk 2019"
+    },
+    {
+      "title": "Heavy for strength, moderate for size.",
+      "text": "Heavy loads win for max strength; growth is similar across loads when sets are hard. Each upper day has one heavy lift (4–8 reps) plus 8–20-rep accessories.",
+      "sources": "Schoenfeld 2017"
+    },
+    {
+      "title": "Undulate the main lifts.",
+      "text": "Heavy bench on Monday, moderate on Thursday (and the reverse for rows). Undulating plans gave slightly more 1RM in trained lifters.",
+      "sources": "Moesgaard 2022"
+    },
+    {
+      "title": "About 10+ hard sets per muscle per week, twice a week.",
+      "text": "More weekly sets build more muscle with diminishing returns; frequency mostly helps strength; little extra growth is detectable beyond about 11 sets per muscle in one session.",
+      "sources": "Pelland 2024 · Remmert 2025"
+    },
+    {
+      "title": "Effort matched to the goal.",
+      "text": "Compounds stop 1–2 reps short; isolations go to 0–1 left. Growth improves near failure, strength doesn't need it.",
+      "sources": "Robinson 2024"
+    },
+    {
+      "title": "Rest 2–3 min on compounds.",
+      "text": "3 min beat 1 min for strength and size; beyond about 90 s, extra rest adds little for growth.",
+      "sources": "Schoenfeld 2016 · Singer 2024"
+    },
+    {
+      "title": "Fast work first.",
+      "text": "Jumps and explosive step-ups open the leg day, while you are fresh; one heavy barbell lift follows, then accessories.",
+      "sources": "Session design"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Bourne 2017: Nordic vs hip extension, hamstring architecture (BJSM)",
+      "url": "https://search.pedro.org.au/search-results/record-detail/57401"
+    },
+    {
+      "title": "Bourne 2017: exercise selection and hamstring activation (BJSM)",
+      "url": "https://pure.southwales.ac.uk/en/publications/impact-of-exercise-selection-on-hamstring-muscle-activation/"
+    },
+    {
+      "title": "Maeo 2021: hamstring hypertrophy, seated vs prone leg curl (MSSE)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33009197/"
+    },
+    {
+      "title": "Maeo 2023: triceps growth, overhead vs neutral arm (EJSS)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35819335/"
+    },
+    {
+      "title": "Hickey 2020: pain-free vs pain-threshold hamstring rehab (JOSPT)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32005093/"
+    },
+    {
+      "title": "Hickey 2022: early high-intensity eccentric loading after hamstring strain",
+      "url": "https://mural.maynoothuniversity.ie/17939/1/JH_early.pdf"
+    },
+    {
+      "title": "Vermeulen 2022: early vs delayed lengthening exercises (BJSM)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9252858"
+    },
+    {
+      "title": "van Dyk 2019: Nordic programs and hamstring injury rates (PEDro summary)",
+      "url": "https://pedro.org.au/english/systematic-review-found-injury-prevention-programs-include-nordic-hamstring-exercises-decrease-risk-hamstring-injuries-among-soccer-players/"
+    },
+    {
+      "title": "Cholp & Zemková 2025: high vs low volume Nordics",
+      "url": "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2025.1631205/full"
+    },
+    {
+      "title": "Small 2009: timing of Nordics in soccer training (JSCR)",
+      "url": "https://research.cumbria.ac.uk/en/publications/effect-of-timing-of-eccentric-hamstring-strengthening-exercises-d/"
+    },
+    {
+      "title": "Schoenfeld 2017: low vs high load (JSCR)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28834797/"
+    },
+    {
+      "title": "Pelland 2024: weekly volume and frequency dose-response (preprint)",
+      "url": "https://sportrxiv.org/index.php/server/preprint/view/460/version/587"
+    },
+    {
+      "title": "Remmert 2025: per-session volume (preprint)",
+      "url": "https://sportrxiv.org/index.php/server/preprint/download/537/1148/1071"
+    },
+    {
+      "title": "Robinson 2024: proximity to failure (FAU summary)",
+      "url": "https://www.fau.edu/newsdesk/articles/muscle-growth-strength-study"
+    },
+    {
+      "title": "Singer 2024: rest intervals and hypertrophy (Frontiers)",
+      "url": "https://doaj.org/article/18363f4031e0487793db2084bee23f38"
+    },
+    {
+      "title": "Schoenfeld 2016: 3-min vs 1-min rest (JSCR)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26605807/"
+    },
+    {
+      "title": "Moesgaard 2022: periodization meta-analysis (Sports Med)",
+      "url": "https://www.pubmed.gov/35044672/"
+    },
+    {
+      "title": "Zhang 2025: supersets vs traditional sets (Sports Med)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12011898/"
+    },
+    {
+      "title": "Static stretching mechanisms review (Sports Med 2025)",
+      "url": "https://fisiologiadelejercicio.com/wp-content/uploads/2025/04/Mechanisms-Underlying-Range-of-Motion-Improvements-Following-Acute-and-Chronic-Static.pdf"
+    },
+    {
+      "title": "Konrad 2021: foam rolling vs stretching",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8514717"
+    },
+    {
+      "title": "van Wijck 2012: exercise GI symptoms and gut blood flow",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22229513/"
+    }
+  ]
+}
