@@ -32,18 +32,18 @@ describe("7.2 loadable weights", () => {
 });
 
 describe("8.3 fixtures 1–4: double progression", () => {
-  it("#1 bench 80 × 6,6,6,6 @ RIR 2 → 82.5", () => {
-    const h = [fxWorkout("UA", "1", [6, 6, 6, 6].map((r) => ({ weight: 80, reps: r, rir: 2 })), "2026-11-09")];
+  it("#1 bench 80 × 6,6,6,6 → 82.5", () => {
+    const h = [fxWorkout("UA", "1", [6, 6, 6, 6].map((r) => ({ weight: 80, reps: r })), "2026-11-09")];
     expect(suggest(bench, h, ctx())?.load).toBe(82.5);
   });
   it("#2 bench 80 × 6,6,5,5 → keep 80", () => {
-    const h = [fxWorkout("UA", "1", [6, 6, 5, 5].map((r) => ({ weight: 80, reps: r, rir: 2 })), "2026-11-09")];
+    const h = [fxWorkout("UA", "1", [6, 6, 5, 5].map((r) => ({ weight: 80, reps: r })), "2026-11-09")];
     const s = suggest(bench, h, ctx())!;
     expect(s.load).toBe(80);
     expect(s.reason).toMatch(/\+1 rep/);
   });
   it("#3 80 × 4,3,4,3 two sessions in a row → 72.5", () => {
-    const sets = [4, 3, 4, 3].map((r) => ({ weight: 80, reps: r, rir: 0 }));
+    const sets = [4, 3, 4, 3].map((r) => ({ weight: 80, reps: r }));
     const h = [fxWorkout("UA", "1", sets, "2026-11-09"), fxWorkout("UA", "1", sets, "2026-11-02")];
     expect(suggest(bench, h, ctx())?.load).toBe(72.5);
     expect(suggest(bench, h.slice(0, 1), ctx())?.load).toBe(80); // only once → keep
@@ -61,9 +61,9 @@ describe("8.3 fixtures 1–4: double progression", () => {
     const sets = [0, 1, 2, 3].flatMap(() => [{ weight: 20, reps: 8, side: "L" as const }, { weight: 20, reps: 6, side: "R" as const }]);
     expect(suggest(row, [fxWorkout("UB", "1", sets, "2026-11-12")], ctx())?.load).toBe(20);
   });
-  it("logged RIR below rirMin blocks the step up", () => {
+  it("reps only: RIR in old logs is ignored", () => {
     const h = [fxWorkout("UA", "1", [6, 6, 6, 6].map((r) => ({ weight: 80, reps: r, rir: 0 })), "2026-11-09")];
-    expect(suggest(bench, h, ctx())?.load).toBe(80);
+    expect(suggest(bench, h, ctx())?.load).toBe(82.5);
   });
   it("no history → no suggestion", () => expect(suggest(bench, [], ctx())).toBeNull());
 });
@@ -72,14 +72,14 @@ describe("8.3 fixture 5: p2 RDL pain 5/10", () => {
   it("no increase next time and shows the p2 onViolation text", () => {
     const p2 = getPhase("p2");
     const rdl = ex("p2-LB", "1");
-    const w = fxWorkout("p2-LB", "1", [10, 10, 10, 10].map((r, i) => ({ weight: 60, reps: r, rir: 2, pain: i === 2 ? 5 : 2 })), "2026-11-13", "p2");
+    const w = fxWorkout("p2-LB", "1", [10, 10, 10, 10].map((r, i) => ({ weight: 60, reps: r, pain: i === 2 ? 5 : 2 })), "2026-11-13", "p2");
     const hold = hamstringHold(p2, [w], []);
     expect(hold.hold).toBe(true);
     const s = suggest(rdl, [w], { ...ctx("p2"), hold })!;
     expect(s.load).toBe(60);
     expect(s.notes).toContain(p2.painRule.onViolation);
     // Without the pain the same session would go up.
-    const clean = fxWorkout("p2-LB", "1", [10, 10, 10, 10].map((r) => ({ weight: 60, reps: r, rir: 2, pain: 2 })), "2026-11-13", "p2");
+    const clean = fxWorkout("p2-LB", "1", [10, 10, 10, 10].map((r) => ({ weight: 60, reps: r, pain: 2 })), "2026-11-13", "p2");
     expect(suggest(rdl, [clean], { ...ctx("p2"), hold: hamstringHold(p2, [clean], []) })!.load).toBe(62.5);
   });
   it("a 'worse' morning-after check also holds", () => {

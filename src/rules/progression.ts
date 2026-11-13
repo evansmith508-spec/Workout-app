@@ -20,7 +20,7 @@ export interface Suggestion {
 
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100));
 
-export interface SetSummary { setIndex: number; reps: number; load: number; rir?: number; pain?: number; control?: 1 | 2 | 3 }
+export interface SetSummary { setIndex: number; reps: number; load: number; pain?: number; control?: 1 | 2 | 3 }
 
 /** Collapse a session's logs to one entry per working set; per-side sets are judged by the weaker side. */
 export function workingSets(e: Exercise, logs: SetLog[]): SetSummary[] {
@@ -34,7 +34,6 @@ export function workingSets(e: Exercise, logs: SetLog[]): SetSummary[] {
         setIndex,
         reps: weakest.reps ?? 0,
         load: (e.equipment === "bodyweight" ? weakest.addedWeight : weakest.weight) ?? 0,
-        rir: weakest.rir,
         pain: Math.max(...ls.map((l) => l.painDuring ?? 0)),
         control: ls.reduce<1 | 2 | 3 | undefined>((m, l) => (l.control && (!m || l.control < m) ? l.control : m), undefined),
       };
@@ -48,11 +47,11 @@ function doubleProgression(e: Exercise, history: WorkoutWithLogs[], s: Settings)
   const last = workingSets(e, history[0]!.logs);
   const load = Math.max(...last.map((x) => x.load));
   const { repsMin, repsMax } = e.prescription;
-  const rirMin = e.effort?.rirMin ?? null;
   if (repsMax == null || repsMin == null) {
     return { load, text: `${fmt(load)} ${unit}`, reason: "Same load as last time.", notes: [], tone: "keep" };
   }
-  const allMax = last.length > 0 && last.every((x) => x.reps >= repsMax) && last.every((x) => rirMin == null || x.rir == null || x.rir >= rirMin);
+  // Reps only: logged effort (RIR) is not part of the decision.
+  const allMax = last.length > 0 && last.every((x) => x.reps >= repsMax);
 
   if (e.equipment === "dumbbell" && isAtMax(load, e, s) && allMax) {
     const top = repsMax + 3;
@@ -68,7 +67,7 @@ function doubleProgression(e: Exercise, history: WorkoutWithLogs[], s: Settings)
   if (allMax) {
     const up = nextLoadableUp(load, e, s);
     if (up == null) return { load, text: `Keep ${fmt(load)} ${unit}`, reason: "Top of your loadable range: add a rep or slow the lowering.", notes: [], tone: "keep" };
-    return { load: up, reps: repsMin, text: `${fmt(up)} ${unit}`, reason: `Every set hit ${repsMax} reps at the planned effort: next step up.`, notes: [], tone: "up" };
+    return { load: up, reps: repsMin, text: `${fmt(up)} ${unit}`, reason: `Every set hit ${repsMax} reps: next step up.`, notes: [], tone: "up" };
   }
   if (belowMin(e, last)) {
     const prev = history[1] ? workingSets(e, history[1].logs) : null;

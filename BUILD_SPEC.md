@@ -119,11 +119,11 @@ Bottom tab bar, max 5 tabs: **Today · Rehab · Mobility · Progress · Settings
 - Show exercises in order with their labels. Mark the main lift with a "Main lift" chip. Show supersets as a joined a/b pair.
 - **Each exercise card:**
   - Prescription line (sets × reps · rest · effort target), plus the cue behind a "Cues" toggle.
-  - **Last time:** e.g. "80 kg × 6, 6, 5, 5 @ RIR 2". Match history by `exerciseId` and `variant`.
+  - **Last time:** e.g. "80 kg × 6, 6, 5, 5". Match history by `exerciseId` and `variant`.
   - **Suggested load** (Section 7.3), with a one-line reason.
   - **Set rows, prefilled from the suggestion:**
     - Weight stepper (barbell/dumbbell), or "added weight" for bodyweight exercises.
-    - Reps stepper, RIR chips (0, 1, 2, 3, 4+), and ✓ to complete the set.
+    - Reps stepper and ✓ to complete the set. No RIR is logged: progression goes by reps only (the plan's effort text is guidance).
     - Per-side exercises log L and R separately.
     - If `hamstringLoad` is true, a **pain 0–10** slider (defaults to the previous value).
     - Nordic and slider exercises also get a **control** rating: 1 = dropped early, 2 = controlled halfway, 3 = controlled near the floor.
@@ -195,7 +195,7 @@ Dates are local `yyyy-mm-dd`, and the week starts Monday. Version the Dexie sche
 Look at the most recent completed logs of the same `exerciseId` + `variant`, ignoring warm-ups. For per-side exercises, judge by the weaker side.
 
 - **`double`** (barbell/dumbbell exercises; this is double progression):
-  - Every working set hit `repsMax`, and the logged RIR was ≥ `rirMin` (it wasn't harder than planned): suggest the **next loadable step up**.
+  - Every working set hit `repsMax`: suggest the **next loadable step up**. Reps only; RIR is not logged or used.
   - Any set fell below `repsMin`: **keep the load**. If that happens in **2 sessions in a row**, suggest **−10%**, rounded to loadable.
   - Otherwise: keep the load and aim for +1 rep on the earliest sets.
   - Dumbbell already at `max`: suggest +1 rep, up to `repsMax + 3`, then the cue "slow the lowering to 3 s".
@@ -271,7 +271,7 @@ Group finished workouts by slot and by `hoursSinceMeal` bucket (<1, 1–2, 2–3
 
 Assume kg, a 20 kg bar, plates `[25, 20, 15, 10, 5, 2.5, 1.25]`, and dumbbells 2.5–32.5 step 2.5.
 
-1. **Bench 4 × 4–6, RIR 1–2.** Last session 80 × 6, 6, 6, 6 at RIR 2 → suggest **82.5**.
+1. **Bench 4 × 4–6.** Last session 80 × 6, 6, 6, 6 → suggest **82.5**.
 2. Same lift, last session 80 × 6, 6, 5, 5 → **keep 80**.
 3. Same lift, 80 × 4, 3, 4, 3 in **two consecutive** sessions → suggest **72.5** (−10%, rounded to loadable).
 4. **One-arm DB row 4 × 5–8** at 32.5 (the dumbbell max), 8 / 8 / 8 / 8 each side → **keep 32.5**, suggest "+1 rep / slow the lowering to 3 s".
@@ -292,7 +292,7 @@ Accounts and cloud sync, social features, AI coaching, push notifications, exerc
 Build in order. Each milestone ends with tests passing and a short "how to try it" note.
 
 1. **M1: Scaffold and plan viewer.** Vite/React/TS app, load `program.json`, Today and read-only session screens for every phase and slot at 390 px. *Done when:* every session renders and the 8.1 and 8.2 fixtures pass.
-2. **M2: Logging.** Dexie schema, set logging, steppers, RIR chips, pain slider, rest timer, supersets, finish flow with nausea fields, resume banner. *Done when:* a full session can be logged offline and survives reload, and fixture 9 passes.
+2. **M2: Logging.** Dexie schema, set logging, steppers, pain slider, rest timer, supersets, finish flow with nausea fields, resume banner. *Done when:* a full session can be logged offline and survives reload, and fixture 9 passes.
 3. **M3: Smart suggestions.** Last-time display, load suggestions, loadable rounding, pain overrides. *Done when:* fixtures 1–6 pass.
 4. **M4: Rehab.** Morning-after and pre-session pain checks, primer log, criteria auto-evidence, advance and drop-back, leg regression window. *Done when:* fixtures 6–8 pass and a phase can be advanced only with every criterion ticked.
 5. **M5: Progress.** e1RM and top-set charts, weekly volume versus plan, nausea insights, pain and Nordic charts.

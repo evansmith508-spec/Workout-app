@@ -56,7 +56,7 @@ export function newBests(e: Exercise, current: SetLog[], previous: SetLog[]): Be
 
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/, "").replace(/\.$/, ""));
 
-/** "80 kg × 6, 6, 5, 5 @ RIR 2". Per-side shows "L/R". Bodyweight shows "+added". */
+/** "80 kg × 6, 6, 5, 5". Per-side shows "L/R". Bodyweight shows "+added". */
 export function lastTimeText(e: Exercise, logs: SetLog[], unit: string): string | null {
   const work = logs.filter((l) => !l.isWarmup).sort((a, b) => a.setIndex - b.setIndex || (a.side ?? "").localeCompare(b.side ?? ""));
   if (work.length === 0) return null;
@@ -74,7 +74,5 @@ export function lastTimeText(e: Exercise, logs: SetLog[], unit: string): string 
   } else {
     load = weights.length === 1 ? `${fmt(weights[0]!)} ${unit} × ` : `${weights.map(fmt).join("/")} ${unit} × `;
   }
-  const rirs = [...new Set(work.map((l) => l.rir).filter((r): r is number => r !== undefined))];
-  const rir = rirs.length === 0 ? "" : ` @ RIR ${rirs.length === 1 ? rirs[0] : `${Math.min(...rirs)}–${Math.max(...rirs)}`}`;
-  return `${load}${repsText}${rir}`;
+  return `${load}${repsText}`;
 }

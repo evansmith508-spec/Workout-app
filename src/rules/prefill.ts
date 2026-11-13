@@ -5,7 +5,6 @@ import type { Exercise } from "../program/types";
 export type LogKind = "load" | "quality";
 export const logKind = (e: Exercise): LogKind => (e.progression === "quality" ? "quality" : "load");
 export const hasControl = (e: Exercise) => e.progression === "nordic" || e.progression === "slider";
-export const hasRir = (e: Exercise) => e.effort?.rirMin != null || e.effort?.rirMax != null;
 export const usesAddedWeight = (e: Exercise) => e.equipment === "bodyweight";
 
 /** Smallest weight change for the stepper. */
@@ -24,7 +23,7 @@ export function plannedSetCount(e: Exercise): number {
   return e.prescription.sets ?? 1;
 }
 
-export interface RowDefaults { weight: number; reps: number; rir: number | null; pain: number; control: 1 | 2 | 3 | null }
+export interface RowDefaults { weight: number; reps: number; pain: number; control: 1 | 2 | 3 | null }
 
 /** Defaults for working set `setIndex`, from the last session's matching set when there is one. */
 export function rowDefaults(e: Exercise, setIndex: number, last: SetLog[], s: Settings, lastPain: number | null,
@@ -35,6 +34,5 @@ export function rowDefaults(e: Exercise, setIndex: number, last: SetLog[], s: Se
   const loadOf = (l?: SetLog) => (l ? (usesAddedWeight(e) ? l.addedWeight : l.weight) : undefined);
   const weight = suggestion?.load ?? loadOf(ref) ?? minWeight(e, s);
   const reps = suggestion?.reps ?? ref?.reps ?? e.prescription.repsMax ?? e.prescription.repsMin ?? 5;
-  const rir = hasRir(e) ? ref?.rir ?? e.effort?.rirMax ?? e.effort?.rirMin ?? null : null;
-  return { weight, reps, rir, pain: lastPain ?? 0, control: hasControl(e) ? ref?.control ?? 2 : null };
+  return { weight, reps, pain: lastPain ?? 0, control: hasControl(e) ? ref?.control ?? 2 : null };
 }

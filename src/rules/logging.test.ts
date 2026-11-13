@@ -92,7 +92,7 @@ describe("last time text", () => {
   it("formats sets", () => {
     const bench = getSession("UA").exercises[0]!;
     const logs = [6, 6, 5, 5].map((r, i) => log({ exerciseIndex: 0, setIndex: i, weight: 80, reps: r, rir: 2 }));
-    expect(lastTimeText(bench, logs, "kg")).toBe("80 kg × 6, 6, 5, 5 @ RIR 2");
+    expect(lastTimeText(bench, logs, "kg")).toBe("80 kg × 6, 6, 5, 5");
   });
   it("per-side shows L/R", () => {
     const row = getSession("UB").exercises[0]!;

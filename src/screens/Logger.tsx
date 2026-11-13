@@ -10,7 +10,7 @@ import { getPhase, getSession } from "../program/program";
 import type { Exercise, Phase, Session } from "../program/types";
 import { restSeconds } from "../rules/rest";
 import {
-  hasControl, hasRir, logKind, minWeight, plannedSetCount, rowDefaults, usesAddedWeight, weightStep,
+  hasControl, logKind, minWeight, plannedSetCount, rowDefaults, usesAddedWeight, weightStep,
 } from "../rules/prefill";
 import { Chips, PainSlider, Stepper } from "../components/controls";
 import { RestTimerBar, unlockAudio, useRestTimer } from "../components/RestTimer";
@@ -22,7 +22,7 @@ import { ExpandRow, Icon, Tag, type IconName } from "../components/ui";
 
 export interface Row {
   key: string; setIndex: number; isWarmup: boolean;
-  weight: number; reps: number; repsR: number; rir: number | null; pain: number; control: 1 | 2 | 3 | null;
+  weight: number; reps: number; repsR: number; pain: number; control: 1 | 2 | 3 | null;
   note: string; done: boolean; logIds: string[];
 }
 interface Draft { rows: Row[][]; primerDone: boolean }
@@ -43,7 +43,6 @@ export function clearDraft(id: string) {
   try { localStorage.removeItem(draftKey(id)); } catch { /* ignore */ }
 }
 
-const RIR_OPTIONS = [0, 1, 2, 3, 4] as const;
 const CONTROL_OPTIONS = [1, 2, 3] as const;
 const CONTROL_TEXT: Record<number, string> = { 1: "1 early", 2: "2 halfway", 3: "3 floor" };
 
@@ -62,7 +61,7 @@ function buildRows(e: Exercise, i: number, existing: SetLog[], last: SetLog[], s
     return {
       key: `${warm ? "w" : "s"}${setIndex}`, setIndex, isWarmup: warm,
       weight: (usesAddedWeight(e) ? L.addedWeight : L.weight) ?? 0, reps: L.reps ?? 0, repsR: R?.reps ?? L.reps ?? 0,
-      rir: L.rir ?? null, pain: L.painDuring ?? 0, control: L.control ?? null, note: L.note ?? "", done: true, logIds: ls.map((l) => l.id),
+      pain: L.painDuring ?? 0, control: L.control ?? null, note: L.note ?? "", done: true, logIds: ls.map((l) => l.id),
     };
   };
   const warmIdx = [...new Set(mine.filter((l) => l.isWarmup).map((l) => l.setIndex))].sort((a, b) => a - b);
@@ -74,7 +73,7 @@ function buildRows(e: Exercise, i: number, existing: SetLog[], last: SetLog[], s
     if (ls.length) rows.push(fromLogs(ls, false, si));
     else {
       const d = rowDefaults(e, si, last, s, lastPain, sug);
-      rows.push({ key: `s${si}`, setIndex: si, isWarmup: false, weight: d.weight, reps: d.reps, repsR: d.reps, rir: d.rir, pain: d.pain, control: d.control, note: "", done: false, logIds: [] });
+      rows.push({ key: `s${si}`, setIndex: si, isWarmup: false, weight: d.weight, reps: d.reps, repsR: d.reps, pain: d.pain, control: d.control, note: "", done: false, logIds: [] });
     }
   }
   return rows;
@@ -89,7 +88,6 @@ function rowToLogs(e: Exercise, i: number, r: Row, workoutId: string): SetLog[] 
     if (usesAddedWeight(e)) base.addedWeight = r.weight;
     else base.weight = r.weight;
   }
-  if (hasRir(e) && r.rir !== null) base.rir = r.rir;
   if (e.hamstringLoad) base.painDuring = r.pain;
   if (hasControl(e) && r.control) base.control = r.control;
   if (r.note.trim()) base.note = r.note.trim();
@@ -103,8 +101,8 @@ function rowToLogs(e: Exercise, i: number, r: Row, workoutId: string): SetLog[] 
 }
 
 const fmtN = (n: number) => (Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100));
-type Col = "w" | "reps" | "rir" | "pain" | "ctrl" | "note";
-const COL_W: Record<Col, string> = { w: "60px", reps: "44px", rir: "40px", pain: "42px", ctrl: "42px", note: "minmax(0,1fr)" };
+type Col = "w" | "reps" | "pain" | "ctrl" | "note";
+const COL_W: Record<Col, string> = { w: "60px", reps: "48px", pain: "42px", ctrl: "42px", note: "minmax(0,1fr)" };
 
 /** Which columns the set table shows for this exercise (design/HANDOFF.md §5.1). */
 function columnsFor(e: Exercise, rows: Row[]): Col[] {
@@ -112,7 +110,6 @@ function columnsFor(e: Exercise, rows: Row[]): Col[] {
   const cols: Col[] = [];
   if (!usesAddedWeight(e) || rows.some((r) => r.weight > 0)) cols.push("w");
   cols.push("reps");
-  if (hasRir(e)) cols.push("rir");
   if (e.hamstringLoad) cols.push("pain");
   if (hasControl(e)) cols.push("ctrl");
   return cols;
@@ -154,9 +151,6 @@ function RowEditor({ e, r, phase, settings, onChange, onTick, onClose }: {
         ) : (
           <Stepper label={quality ? "Reps done" : "Reps"} value={r.reps} step={1} onChange={(v) => onChange({ reps: v })} />
         )}
-        {hasRir(e) && !r.isWarmup && (
-          <Chips label="Reps in reserve" options={RIR_OPTIONS} value={r.rir} onChange={(v) => onChange({ rir: v })} render={(v) => (v === 4 ? "4+" : v)} />
-        )}
         {hasControl(e) && (
           <Chips label="Control (1 dropped early · 3 near floor)" options={CONTROL_OPTIONS} value={r.control} onChange={(v) => onChange({ control: v })} render={(v) => CONTROL_TEXT[v]} />
         )}
@@ -181,7 +175,7 @@ function SetTable({ e, rows, phase, settings, last, onChange, onTick }: {
   const cols = columnsFor(e, rows);
   const showPrev = logKind(e) !== "quality";
   const grid = { gridTemplateColumns: ["30px", showPrev ? "minmax(0,1fr)" : null, ...cols.map((c) => COL_W[c]), "40px"].filter(Boolean).join(" ") };
-  const head: Record<Col, string> = { w: usesAddedWeight(e) ? `+${settings.units.toUpperCase()}` : settings.units.toUpperCase(), reps: "Reps", rir: "RIR", pain: "Pain", ctrl: "Ctrl", note: "Note" };
+  const head: Record<Col, string> = { w: usesAddedWeight(e) ? `+${settings.units.toUpperCase()}` : settings.units.toUpperCase(), reps: "Reps", pain: "Pain", ctrl: "Ctrl", note: "Note" };
   const max = phase.painRule.maxDuringPain;
 
   const cell = (r: Row, k: number, c: Col, side?: "L" | "R") => {
@@ -191,7 +185,6 @@ function SetTable({ e, rows, phase, settings, last, onChange, onTick }: {
     switch (c) {
       case "w": v = fmtN(r.weight); break;
       case "reps": v = String(side === "R" ? r.repsR : r.reps); break;
-      case "rir": v = r.isWarmup || r.rir === null ? "–" : r.rir === 4 ? "4+" : String(r.rir); break;
       case "pain": v = String(r.pain); if (r.pain > max) cls = "over"; break;
       case "ctrl": v = r.control ? String(r.control) : "–"; break;
       case "note": v = r.note || (r.done ? "" : "Add"); cls = "note"; break;
@@ -253,7 +246,7 @@ function ExerciseLogger({ e, rows, phase, settings, last, suggestion, p4Stop, on
     const setIndex = same.length ? Math.max(...same.map((r) => r.setIndex)) + 1 : 0;
     const base: Row = src
       ? { ...src, done: false, logIds: [], note: "" }
-      : { key: "", setIndex: 0, isWarmup: warm, weight: minWeight(e, settings), reps: e.prescription.repsMin ?? 5, repsR: e.prescription.repsMin ?? 5, rir: null, pain: 0, control: null, note: "", done: false, logIds: [] };
+      : { key: "", setIndex: 0, isWarmup: warm, weight: minWeight(e, settings), reps: e.prescription.repsMin ?? 5, repsR: e.prescription.repsMin ?? 5, pain: 0, control: null, note: "", done: false, logIds: [] };
     const row: Row = { ...base, key: `${warm ? "w" : "s"}${setIndex}`, setIndex, isWarmup: warm, note, weight: warm ? minWeight(e, settings) : base.weight };
     const firstWork = rows.findIndex((r) => !r.isWarmup);
     if (warm) {
